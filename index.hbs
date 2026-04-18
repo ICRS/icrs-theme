@@ -1,0 +1,60 @@
+{{!< default}}
+
+<section class="hero hero-icrs floating-block bordered-block">
+    <div class="hero-inner">
+        <div class="hero-left">
+            {{#if @site.logo}}
+                <div class="hero-logo-mask" style="-webkit-mask-image: url({{@site.logo}}); mask-image: url({{@site.logo}});"></div>
+            {{else}}
+                <h1 class="hero-massive-title hatching-text">ICRS</h1>
+            {{/if}}
+        </div>
+        <div class="hero-right">
+            <p class="hero-description">
+                <strong>ICRS</strong> is Imperial’s home for robotics, making, and creative engineering. We provide a dedicated lab space (EEE 505) where students can design, prototype, and experiment with their own projects.
+                <br><br>
+                <a href="/about/">&lt;more&gt;</a>
+            </p>
+            <div class="hero-tags-links">
+                {{#if @custom.hero_tag_1_text}}
+                    <a href="{{@custom.hero_tag_1_url}}" class="hero-tag" {{#if @custom.hero_tag_1_color}}style="color: {{@custom.hero_tag_1_color}}"{{/if}}>{{@custom.hero_tag_1_text}}</a>
+                {{/if}}
+                {{#if @custom.hero_tag_2_text}}
+                    <a href="{{@custom.hero_tag_2_url}}" class="hero-tag" {{#if @custom.hero_tag_2_color}}style="color: {{@custom.hero_tag_2_color}}"{{/if}}>{{@custom.hero_tag_2_text}}</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="spacer-block floating-block bordered-block"></div>
+
+<section class="post-feed-container floating-block">
+    <div class="section-label">[POSTS]</div>
+    <div class="post-feed">
+        {{#foreach posts}}
+            {{> post-card}}
+        {{/foreach}}
+    </div>
+</section>
+
+<section class="gallery-marquee-container floating-block">
+    <div class="section-label">[GALLERY]</div>
+    <div class="gallery-marquee-wrapper">
+        <div class="gallery-marquee">
+            <div class="marquee-item placeholder-block"></div>
+            <div class="marquee-item placeholder-block"></div>
+            <div class="marquee-item placeholder-block"></div>
+            <div class="marquee-item placeholder-block"></div>
+            <div class="marquee-item placeholder-block"></div>
+            <!-- Duplicated for seamless looping -->
+            <div class="marquee-item placeholder-block"></div>
+            <div class="marquee-item placeholder-block"></div>
+            <div class="marquee-item placeholder-block"></div>
+            <div class="marquee-item placeholder-block"></div>
+            <div class="marquee-item placeholder-block"></div>
+        </div>
+    </div>
+</section>
+
+{{> pagination}}

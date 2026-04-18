@@ -1,0 +1,21 @@
+{{#if pagination.pages}}
+{{#has number="2-"}}
+<nav class="pagination">
+    <div class="pagination-inner">
+        {{#if pagination.prev}}
+        <a class="pagination-prev" href="{{page_url pagination.prev}}">&larr; PREV</a>
+        {{else}}
+        <span class="pagination-prev pagination-disabled">&larr; PREV</span>
+        {{/if}}
+
+        <span class="pagination-info">PAGE {{pagination.page}} / {{pagination.pages}}</span>
+
+        {{#if pagination.next}}
+        <a class="pagination-next" href="{{page_url pagination.next}}">NEXT &rarr;</a>
+        {{else}}
+        <span class="pagination-next pagination-disabled">NEXT &rarr;</span>
+        {{/if}}
+    </div>
+</nav>
+{{/has}}
+{{/if}}

@@ -1,0 +1,77 @@
+{
+  "name": "icrs-theme",
+  "description": "Ghost theme for Imperial College Robotics Society",
+  "version": "1.0.0",
+  "engines": {
+    "ghost": ">=6.0.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ghost-theme"
+  ],
+  "author": {
+    "name": "ICRS",
+    "email": "icrs@imperial.ac.uk",
+    "url": "https://icrs.io"
+  },
+  "config": {
+    "posts_per_page": 12,
+    "image_sizes": {
+      "xxs": {
+        "width": 30
+      },
+      "xs": {
+        "width": 100
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 1000
+      },
+      "xl": {
+        "width": 2000
+      }
+    },
+    "card_assets": true,
+    "custom": {
+      "alert_banner_text": {
+        "type": "text",
+        "default": "",
+        "description": "Alert banner text displayed at the top of the site (leave empty to hide)"
+      },
+      "footer_text": {
+        "type": "text",
+        "default": "Imperial College Robotics Society",
+        "description": "Text displayed in the footer"
+      },
+      "hero_tag_1_text": {
+        "type": "text",
+        "default": "IPRL"
+      },
+      "hero_tag_1_url": {
+        "type": "text",
+        "default": "/tag/iprl/"
+      },
+      "hero_tag_1_color": {
+        "type": "color",
+        "default": "#FF5C00"
+      },
+      "hero_tag_2_text": {
+        "type": "text",
+        "default": "UNIBOTS"
+      },
+      "hero_tag_2_url": {
+        "type": "text",
+        "default": "/tag/unibots/"
+      },
+      "hero_tag_2_color": {
+        "type": "color",
+        "default": "#00B523"
+      }
+    }
+  }
+}

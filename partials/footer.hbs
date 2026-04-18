@@ -1,0 +1,18 @@
+<footer class="site-footer floating-block">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a class="footer-logo" href="{{@site.url}}">
+                <span class="logo-ic">IC</span><span class="logo-rs">RS</span>
+            </a>
+            <p class="footer-description">{{@custom.footer_text}}</p>
+        </div>
+        <div class="footer-nav">
+            {{navigation}}
+        </div>
+        <div class="footer-meta">
+            <p>&copy; {{date format="YYYY"}} {{@site.title}}</p>
+            <p><a href="https://ghost.org" target="_blank" rel="noopener">Powered by Ghost</a></p>
+        </div>
+    </div>
+    <div class="footer-hatching"></div>
+</footer>

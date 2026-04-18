@@ -1,0 +1,20 @@
+{{!< default}}
+
+<section class="archive-header">
+    <div class="archive-label">[TAG]</div>
+    <h1 class="archive-title">{{name}}</h1>
+    {{#if description}}
+    <p class="archive-description">{{description}}</p>
+    {{/if}}
+    <div class="archive-count">{{plural ../pagination.total empty="No posts" singular="1 post" plural="% posts"}}</div>
+</section>
+
+<section class="post-feed-container">
+    <div class="post-feed">
+        {{#foreach posts}}
+            {{> post-card}}
+        {{/foreach}}
+    </div>
+</section>
+
+{{> pagination}}

@@ -1,0 +1,30 @@
+{{!< default}}
+
+<section class="archive-header">
+    <div class="archive-label">[AUTHOR]</div>
+    <div class="author-header-content">
+        {{#if profile_image}}
+        <img class="author-avatar" src="{{img_url profile_image size="m"}}" alt="{{name}}">
+        {{/if}}
+        <div>
+            <h1 class="archive-title">{{name}}</h1>
+            {{#if bio}}
+            <p class="archive-description">{{bio}}</p>
+            {{/if}}
+            {{#if location}}
+            <span class="author-location">{{location}}</span>
+            {{/if}}
+        </div>
+    </div>
+    <div class="archive-count">{{plural ../pagination.total empty="No posts" singular="1 post" plural="% posts"}}</div>
+</section>
+
+<section class="post-feed-container">
+    <div class="post-feed">
+        {{#foreach posts}}
+            {{> post-card}}
+        {{/foreach}}
+    </div>
+</section>
+
+{{> pagination}}

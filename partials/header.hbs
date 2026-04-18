@@ -1,0 +1,20 @@
+<div class="sticky-header-container floating-block">
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="site-logo" href="{{@site.url}}">
+                {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" class="nav-logo">
+                {{else}}
+                    <span class="logo-ic">IC</span><span class="logo-rs">RS</span>
+                {{/if}}
+            </a>
+            <nav class="site-nav">
+                {{navigation}}
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+</div>
