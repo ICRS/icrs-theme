@@ -71,6 +71,18 @@
       "hero_tag_2_color": {
         "type": "color",
         "default": "#00B523"
+      },
+      "hero_tag_3_text": {
+        "type": "text",
+        "default": ""
+      },
+      "hero_tag_3_url": {
+        "type": "text",
+        "default": ""
+      },
+      "hero_tag_3_color": {
+        "type": "color",
+        "default": "#001EFF"
       }
     }
   }

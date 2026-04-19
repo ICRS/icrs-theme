@@ -583,6 +583,70 @@ h6 {
 
 
 /* --------------------------------------------------------------------------
+   6.7. Sponsors
+   -------------------------------------------------------------------------- */
+
+.sponsors-container {
+    padding: var(--gap) var(--gap-lg) var(--gap-lg);
+}
+
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap);
+}
+
+.sponsor-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3 / 2;
+    padding: var(--gap);
+    border: var(--border);
+    background: var(--theme-card-bg);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.sponsor-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--theme-border);
+    color: inherit;
+}
+
+.sponsor-item img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.sponsor-name {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .sponsors-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
    7. Pagination
    -------------------------------------------------------------------------- */
 
@@ -1154,6 +1218,548 @@ h6 {
 .error-link:hover {
     background: var(--color-black);
     color: var(--color-white);
+}
+
+
+/* --------------------------------------------------------------------------
+   14.5. Lobstar Subsite (clean modern — Jost + EB Garamond)
+   -------------------------------------------------------------------------- */
+
+body.page-lobstar {
+    --lobstar-red: #b40000;
+    --lobstar-cream: #f5ead5;
+    --lobstar-ink: #000;
+    --lobstar-muted: #555;
+    --lobstar-rule: rgba(0, 0, 0, 0.12);
+    --lobstar-heading: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+    --lobstar-body: 'EB Garamond', Georgia, serif;
+
+    background: var(--lobstar-cream);
+    color: var(--lobstar-ink);
+    font-family: var(--lobstar-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+
+    /* Override global body padding/gap so the sticky nav is flush at top
+       both at rest and while scrolling — same visible height in both states. */
+    padding: 0;
+    gap: 0;
+}
+
+body.page-lobstar h1,
+body.page-lobstar h2,
+body.page-lobstar h3,
+body.page-lobstar h4 {
+    font-family: var(--lobstar-heading);
+    font-weight: 600;
+    color: var(--lobstar-ink);
+    letter-spacing: -0.005em;
+}
+
+body.page-lobstar a { color: var(--lobstar-red); text-decoration: none; }
+body.page-lobstar a:hover { text-decoration: underline; }
+
+.lobstar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Wordmark — "Lob[STAR] Robotics" */
+.lobstar-wordmark {
+    font-family: var(--lobstar-heading);
+    font-weight: 400;
+    font-size: 2.25rem;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    justify-self: center;
+    text-align: center;
+}
+body.page-lobstar a.lobstar-wordmark,
+body.page-lobstar a.lobstar-wordmark:hover {
+    color: var(--lobstar-ink);
+    text-decoration: none;
+}
+.lobstar-wordmark em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--lobstar-red);
+}
+
+/* Nav */
+.lobstar-nav {
+    background: var(--lobstar-cream);
+    border-bottom: 1px solid var(--lobstar-rule);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.lobstar-nav-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+}
+.lobstar-nav-inner > .lobstar-nav-back { justify-self: start; }
+.lobstar-nav-inner > .lobstar-nav-links { justify-self: end; }
+.lobstar-nav-back {
+    font-family: var(--lobstar-heading);
+    font-size: 0.875rem;
+    color: var(--lobstar-ink);
+    font-weight: 500;
+}
+.lobstar-nav-back:hover { color: var(--lobstar-red); text-decoration: none; }
+.lobstar-nav-links {
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--lobstar-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.lobstar-nav-links a { color: var(--lobstar-ink); }
+.lobstar-nav-links a:hover { color: var(--lobstar-red); text-decoration: none; }
+
+/* Hero — reference-matching: eyebrow + serif headline + image w/ red bar + giant wordmark + 2-col body */
+.lobstar-hero {
+    padding: 2rem 1.5rem 4.5rem;
+    text-align: center;
+}
+.lobstar-hero-inner { max-width: 1100px; margin: 0 auto; }
+
+.lobstar-hero-top { margin-bottom: 2.5rem; }
+
+.lobstar-hero-eyebrow {
+    display: inline-block;
+    font-family: var(--lobstar-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--lobstar-ink);
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.75rem;
+    position: relative;
+}
+.lobstar-hero-eyebrow::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 4rem;
+    height: 2px;
+    background: var(--lobstar-red);
+    transform: translateX(-50%);
+}
+
+/* Image + highlight bar laid out side-by-side (no overlap) */
+.lobstar-hero-image-wrap {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem auto 1.5rem;
+    max-width: 960px;
+}
+.lobstar-hero-image {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+.lobstar-hero-image-placeholder {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background:
+        repeating-linear-gradient(135deg,
+            rgba(180, 0, 0, 0.06) 0 12px,
+            transparent 12px 24px);
+    border: 1px dashed var(--lobstar-rule);
+}
+.lobstar-hero-highlight {
+    flex: 0 0 56px;
+    align-self: center;
+    height: 65%;
+    background: var(--lobstar-red);
+}
+
+/* Title sits where the wordmark used to be — giant serif display */
+.lobstar-hero-title {
+    font-family: var(--lobstar-body); /* EB Garamond serif */
+    font-weight: 500;
+    font-size: clamp(3rem, 5vw, 8rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 1.5rem auto 3rem;
+    max-width: 1000px;
+    color: var(--lobstar-ink);
+}
+
+.lobstar-hero-body {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--lobstar-ink);
+}
+.lobstar-hero-body p { margin: 0 0 1.25rem; }
+.lobstar-hero-body p:first-child { margin-top: 0; }
+
+/* Tagline at top of hero — same lob-title treatment, centered */
+.lobstar-hero-tagline { text-align: center; margin: 0 auto 0.5rem; }
+
+/* Featured post highlight under intro content */
+.lobstar-featured-section {
+    padding: 0 1.5rem 2.75rem;
+}
+.lobstar-featured-post {
+    display: grid;
+    grid-template-columns: minmax(280px, 40%) 1fr;
+    gap: 1.75rem;
+    border: 1px solid var(--lobstar-rule);
+    background: var(--lobstar-cream);
+    color: var(--lobstar-ink);
+    overflow: hidden;
+    text-decoration: none;
+}
+.lobstar-featured-post:hover {
+    border-color: var(--lobstar-red);
+    text-decoration: none;
+}
+.lobstar-featured-media {
+    background: transparent;
+    min-height: 220px;
+}
+.lobstar-featured-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.lobstar-featured-media-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    background:
+        repeating-linear-gradient(135deg,
+            rgba(180, 0, 0, 0.07) 0 12px,
+            transparent 12px 24px);
+}
+.lobstar-featured-body {
+    padding: 1.5rem 1.5rem 1.5rem 0;
+    align-self: center;
+}
+.lobstar-featured-title {
+    font-size: clamp(1.45rem, 2.6vw, 2.1rem);
+    line-height: 1.2;
+    margin: 0 0 0.65rem;
+}
+.lobstar-featured-post:hover .lobstar-featured-title { color: var(--lobstar-red); }
+.lobstar-featured-excerpt {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--lobstar-muted);
+    margin: 0;
+}
+
+/* Section scaffolding */
+.lobstar-section { padding: 3.5rem 1.5rem; }
+.lobstar-section-heading {
+    font-size: 1.75rem;
+    margin: 0 0 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--lobstar-rule);
+}
+
+/* Shared card */
+.lobstar-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--lobstar-cream);
+    border: 1px solid var(--lobstar-rule);
+    color: var(--lobstar-ink);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+    overflow: hidden;
+}
+.lobstar-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--lobstar-red);
+    text-decoration: none;
+}
+.lobstar-card-media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: transparent;
+}
+.lobstar-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.lobstar-card-body { padding: 1.25rem 1.25rem 1.5rem; }
+.lobstar-card-meta {
+    font-family: var(--lobstar-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--lobstar-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.lobstar-card-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+}
+.lobstar-card:hover .lobstar-card-title { color: var(--lobstar-red); }
+.lobstar-card-excerpt {
+    font-size: 1rem;
+    color: var(--lobstar-muted);
+    margin: 0 0 0.5rem;
+    line-height: 1.5;
+}
+.lobstar-card-link {
+    font-family: var(--lobstar-heading);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--lobstar-red);
+}
+
+/* Posts grid */
+.lobstar-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Sponsors — non-interactive, 1:1 image with name below */
+.lobstar-sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+.lobstar-sponsor {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    text-align: center;
+}
+.lobstar-sponsor-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: transparent;
+    border: 1px solid var(--lobstar-rule);
+    overflow: hidden;
+}
+.lobstar-sponsor-image img {
+    position: absolute;
+    inset: 1.25rem;
+    width: calc(100% - 2.5rem);
+    height: calc(100% - 2.5rem);
+    max-width: none;
+    object-fit: contain;
+}
+.lobstar-sponsor-name {
+    font-family: var(--lobstar-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--lobstar-ink);
+}
+.lobstar-sponsor-excerpt {
+    font-family: var(--lobstar-body);
+    font-size: 0.95rem;
+    color: var(--lobstar-muted);
+    margin: 0;
+    line-height: 1.45;
+}
+
+/* Subsystems (formerly rovers) — square media */
+.lobstar-rovers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.lobstar-rover-card .lobstar-card-media { aspect-ratio: 1 / 1; }
+.lobstar-rover-card .lobstar-card-media img { object-fit: contain; }
+
+/* Team */
+.lobstar-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+.lobstar-team-member { text-align: center; }
+.lobstar-team-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    display: block;
+    border: 2px solid var(--lobstar-rule);
+}
+.lobstar-team-avatar-placeholder { background: var(--lobstar-rule); }
+.lobstar-team-name {
+    font-family: var(--lobstar-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+}
+.lobstar-team-bio {
+    font-size: 0.95rem;
+    color: var(--lobstar-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Article (post view) */
+.lobstar-article { padding: 3rem 1.5rem; max-width: 760px; }
+.lobstar-article-header { margin-bottom: 2rem; }
+.lobstar-article-meta {
+    font-family: var(--lobstar-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--lobstar-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+.lobstar-article-meta a { color: var(--lobstar-muted); }
+.lobstar-article-meta a:hover { color: var(--lobstar-red); }
+.lobstar-article-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    margin: 0 0 1rem;
+}
+.lobstar-article-excerpt {
+    font-family: var(--lobstar-body);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--lobstar-muted);
+    margin: 0 0 1.25rem;
+}
+.lobstar-article-byline {
+    font-family: var(--lobstar-heading);
+    font-size: 0.9rem;
+    color: var(--lobstar-muted);
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.lobstar-article-figure { margin: 2rem 0; }
+.lobstar-article-figure img { width: 100%; height: auto; display: block; }
+.lobstar-article-figure figcaption {
+    font-size: 0.9rem;
+    color: var(--lobstar-muted);
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Rich content (Ghost editor output) */
+.lobstar-content { font-size: 1.15rem; line-height: 1.7; }
+.lobstar-content p { margin: 0 0 1.25rem; }
+.lobstar-content h2 { font-size: 1.75rem; margin: 2.5rem 0 1rem; }
+.lobstar-content h3 { font-size: 1.35rem; margin: 2rem 0 0.75rem; }
+.lobstar-content img { max-width: 100%; height: auto; }
+.lobstar-content blockquote {
+    border-left: 3px solid var(--lobstar-red);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--lobstar-muted);
+}
+.lobstar-content code {
+    background: rgba(180, 0, 0, 0.08);
+    padding: 0.15em 0.4em;
+    border-radius: 2px;
+    font-size: 0.95em;
+}
+.lobstar-content pre {
+    background: #1a1a1a;
+    color: #f5ead5;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.95rem;
+}
+.lobstar-content pre code { background: transparent; padding: 0; }
+
+/* Footer */
+.lobstar-footer {
+    border-top: 1px solid var(--lobstar-rule);
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+.lobstar-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.lobstar-footer-meta {
+    font-family: var(--lobstar-heading);
+    font-size: 0.85rem;
+    color: var(--lobstar-muted);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .lobstar-hero { padding: 2.5rem 1rem 3rem; }
+    .lobstar-hero-highlight { width: 36px; }
+    .lobstar-featured-post { grid-template-columns: 1fr; gap: 0; }
+    .lobstar-featured-media { min-height: 0; aspect-ratio: 16 / 9; }
+    .lobstar-featured-body { padding: 1.25rem; }
+    .lobstar-posts-grid,
+    .lobstar-rovers-grid { grid-template-columns: repeat(2, 1fr); }
+    .lobstar-sponsors-grid,
+    .lobstar-team-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .lobstar-nav-inner { flex-wrap: wrap; gap: 0.75rem; }
+    .lobstar-nav-links { gap: 1rem; font-size: 0.85rem; }
+    .lobstar-hero-highlight { flex-basis: 24px; }
+    .lobstar-featured-section { padding: 0 1rem 2rem; }
+    .lobstar-posts-grid,
+    .lobstar-rovers-grid { grid-template-columns: 1fr; }
+    .lobstar-sponsors-grid { grid-template-columns: repeat(2, 1fr); }
+    .lobstar-team-grid { grid-template-columns: repeat(2, 1fr); }
+    .lobstar-section { padding: 2.5rem 1rem; }
+}
+
+/* Mixed-style headline utility — drop into a Ghost HTML card to mix Jost
+   heading text with a serif-bold model name (e.g. "Introducing the LOB-26").
+   When present in the post body, it hides the auto-rendered post title so
+   this becomes the visual title in its place. */
+.lob-title {
+    font-family: var(--lobstar-heading);
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: var(--lobstar-ink);
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.005em;
+}
+.lob-title .serif {
+    font-family: var(--lobstar-body); /* EB Garamond */
+    font-weight: 700;
+    font-style: normal;
+}
+.lob-title .red {
+    color: var(--lobstar-red);
+}
+
+/* Hide the auto-rendered title when the body contains a .lob-title */
+.lobstar-article:has(.lobstar-content .lob-title) .lobstar-article-title,
+.lobstar-hero:has(.lobstar-hero-body .lob-title) .lobstar-hero-title {
+    display: none;
 }
 
 

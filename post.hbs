@@ -1,71 +1,190 @@
-{{!< default}}
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    {{#post}}{{#has tag="lobstar,hash-lobstar-post,lobstar-post"}}
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    {{/has}}{{/post}}
+    {{ghost_head}}
+</head>
+<body class="{{#post}}{{#has tag="lobstar,hash-lobstar-post,lobstar-post"}}page-lobstar {{/has}}{{/post}}{{body_class}}">
 
 {{#post}}
-<article class="post-full">
-    <header class="post-header">
-        <div class="post-header-meta">
-            {{#if primary_tag}}
-            <a class="post-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
-            {{/if}}
-            <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD.MM.YYYY"}}</time>
-        </div>
-        <h1 class="post-title">{{title}}</h1>
-        {{#if custom_excerpt}}
-        <p class="post-excerpt">{{custom_excerpt}}</p>
-        {{/if}}
-        <div class="post-byline">
-            {{#foreach authors}}
-            <span class="post-author">
-                {{#if profile_image}}
-                <img class="post-author-avatar" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
-                {{/if}}
-                <a href="{{url}}">{{name}}</a>
-            </span>
-            {{/foreach}}
-            <span class="post-reading-time">{{reading_time}}</span>
+{{#has tag="lobstar,hash-lobstar-post,lobstar-post"}}
+
+    <header class="lobstar-nav">
+        <div class="lobstar-container lobstar-nav-inner">
+            <a href="/lobstar/" class="lobstar-nav-back">&larr; LOBSTAR</a>
+            <a href="/lobstar/" class="lobstar-wordmark">Lob<em>STAR</em> Robotics</a>
+            <nav class="lobstar-nav-links">
+                <a href="/lobstar/#posts">Posts</a>
+                <a href="/lobstar/#rovers">Rovers</a>
+                <a href="/lobstar/#team">Team</a>
+            </nav>
         </div>
     </header>
 
-    {{#if feature_image}}
-    <figure class="post-feature-image">
-        <img
-            srcset="{{img_url feature_image size="s"}} 300w,
-                    {{img_url feature_image size="m"}} 600w,
-                    {{img_url feature_image size="l"}} 1000w,
-                    {{img_url feature_image size="xl"}} 2000w"
-            sizes="(min-width: 1000px) 1000px, 90vw"
-            src="{{img_url feature_image size="xl"}}"
-            alt="{{title}}"
-        >
-        {{#if feature_image_caption}}
-        <figcaption>{{feature_image_caption}}</figcaption>
-        {{/if}}
-    </figure>
+    <main class="site-content">
+        <article class="lobstar-article lobstar-container">
+            <header class="lobstar-article-header">
+                <div class="lobstar-article-meta">
+                    {{#if primary_tag}}<a href="{{primary_tag.url}}">{{primary_tag.name}}</a> &middot; {{/if}}
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                </div>
+                <h1 class="lobstar-article-title">{{title}}</h1>
+                {{#if custom_excerpt}}
+                <p class="lobstar-article-excerpt">{{custom_excerpt}}</p>
+                {{/if}}
+                <div class="lobstar-article-byline">
+                    {{#foreach authors}}<span>By <a href="{{url}}">{{name}}</a></span>{{/foreach}}
+                    <span>&middot; {{reading_time}}</span>
+                </div>
+            </header>
+
+            {{#if feature_image}}
+            <figure class="lobstar-article-figure">
+                <img
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w,
+                            {{img_url feature_image size="xl"}} 2000w"
+                    sizes="(min-width: 1000px) 1000px, 90vw"
+                    src="{{img_url feature_image size="xl"}}"
+                    alt="{{title}}">
+                {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+            </figure>
+            {{/if}}
+
+            <div class="lobstar-content">
+                {{content}}
+            </div>
+        </article>
+
+        <section class="lobstar-section lobstar-container">
+            <h2 class="lobstar-section-heading">More posts</h2>
+            <div class="lobstar-posts-grid">
+                {{#next_post}}
+                    <a class="lobstar-card lobstar-post-card" href="{{url}}">
+                        {{#if feature_image}}<div class="lobstar-card-media"><img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy"></div>{{/if}}
+                        <div class="lobstar-card-body">
+                            <span class="lobstar-card-meta">Next &middot; {{date format="DD MMM YYYY"}}</span>
+                            <h3 class="lobstar-card-title">{{title}}</h3>
+                        </div>
+                    </a>
+                {{/next_post}}
+                {{#prev_post}}
+                    <a class="lobstar-card lobstar-post-card" href="{{url}}">
+                        {{#if feature_image}}<div class="lobstar-card-media"><img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy"></div>{{/if}}
+                        <div class="lobstar-card-body">
+                            <span class="lobstar-card-meta">Previous &middot; {{date format="DD MMM YYYY"}}</span>
+                            <h3 class="lobstar-card-title">{{title}}</h3>
+                        </div>
+                    </a>
+                {{/prev_post}}
+            </div>
+        </section>
+    </main>
+
+    <footer class="lobstar-footer">
+        <div class="lobstar-container lobstar-footer-inner">
+            <span class="lobstar-wordmark">Lob<em>STAR</em> Robotics</span>
+            <span class="lobstar-footer-meta">A division of the Imperial College Robotics Society &middot; &copy; {{date format="YYYY"}}</span>
+        </div>
+    </footer>
+
+{{else}}
+
+    {{#if @custom.alert_banner_text}}
+    <div class="alert-banner">
+        <span class="alert-label">[ALERT]</span>
+        <span class="alert-text">{{@custom.alert_banner_text}}</span>
+    </div>
     {{/if}}
 
-    <div class="post-content gh-content">
-        {{content}}
-    </div>
-</article>
+    {{> header}}
 
-{{#if tags}}
-<div class="post-tags">
-    <span class="post-tags-label">[TAGS]</span>
-    {{#foreach tags}}
-    <a class="post-tags-item" href="{{url}}">{{name}}</a>
-    {{/foreach}}
-</div>
-{{/if}}
+    <main class="site-content">
+        <article class="post-full">
+            <header class="post-header">
+                <div class="post-header-meta">
+                    {{#if primary_tag}}
+                    <a class="post-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+                    {{/if}}
+                    <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD.MM.YYYY"}}</time>
+                </div>
+                <h1 class="post-title">{{title}}</h1>
+                {{#if custom_excerpt}}
+                <p class="post-excerpt">{{custom_excerpt}}</p>
+                {{/if}}
+                <div class="post-byline">
+                    {{#foreach authors}}
+                    <span class="post-author">
+                        {{#if profile_image}}
+                        <img class="post-author-avatar" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
+                        {{/if}}
+                        <a href="{{url}}">{{name}}</a>
+                    </span>
+                    {{/foreach}}
+                    <span class="post-reading-time">{{reading_time}}</span>
+                </div>
+            </header>
 
-<div class="read-next">
-    <div class="section-label">[READ MORE]</div>
-    <div class="post-feed">
-        {{#next_post}}
-            {{> post-card}}
-        {{/next_post}}
-        {{#prev_post}}
-            {{> post-card}}
-        {{/prev_post}}
-    </div>
-</div>
+            {{#if feature_image}}
+            <figure class="post-feature-image">
+                <img
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w,
+                            {{img_url feature_image size="xl"}} 2000w"
+                    sizes="(min-width: 1000px) 1000px, 90vw"
+                    src="{{img_url feature_image size="xl"}}"
+                    alt="{{title}}"
+                >
+                {{#if feature_image_caption}}
+                <figcaption>{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
+            {{/if}}
+
+            <div class="post-content gh-content">
+                {{content}}
+            </div>
+        </article>
+
+        {{#if tags}}
+        <div class="post-tags">
+            <span class="post-tags-label">[TAGS]</span>
+            {{#foreach tags}}
+            <a class="post-tags-item" href="{{url}}">{{name}}</a>
+            {{/foreach}}
+        </div>
+        {{/if}}
+
+        <div class="read-next">
+            <div class="section-label">[READ MORE]</div>
+            <div class="post-feed">
+                {{#next_post}}
+                    {{> post-card}}
+                {{/next_post}}
+                {{#prev_post}}
+                    {{> post-card}}
+                {{/prev_post}}
+            </div>
+        </div>
+    </main>
+
+    {{> footer}}
+
+{{/has}}
 {{/post}}
+
+<script src="{{asset "js/main.js"}}"></script>
+{{ghost_foot}}
+</body>
+</html>

@@ -22,6 +22,9 @@
                 {{#if @custom.hero_tag_2_text}}
                     <a href="{{@custom.hero_tag_2_url}}" class="hero-tag" {{#if @custom.hero_tag_2_color}}style="color: {{@custom.hero_tag_2_color}}"{{/if}}>{{@custom.hero_tag_2_text}}</a>
                 {{/if}}
+                {{#if @custom.hero_tag_3_text}}
+                    <a href="{{@custom.hero_tag_3_url}}" class="hero-tag" {{#if @custom.hero_tag_3_color}}style="color: {{@custom.hero_tag_3_color}}"{{/if}}>{{@custom.hero_tag_3_text}}</a>
+                {{/if}}
             </div>
         </div>
     </div>
@@ -32,9 +35,11 @@
 <section class="post-feed-container floating-block">
     <div class="section-label">[POSTS]</div>
     <div class="post-feed">
-        {{#foreach posts}}
-            {{> post-card}}
-        {{/foreach}}
+        {{#get "posts" filter="tag:hash-icrs-post" limit="12" include="tags,authors" as |icrs_posts|}}
+            {{#foreach icrs_posts}}
+                {{> post-card}}
+            {{/foreach}}
+        {{/get}}
     </div>
 </section>
 
@@ -56,5 +61,39 @@
         </div>
     </div>
 </section>
+
+{{#get "posts" filter="tag:hash-icrs-sponsor" limit="all" include="tags" as |sponsors|}}
+    {{#if sponsors}}
+    <div class="spacer-block floating-block"></div>
+    <section class="sponsors-container floating-block bordered-block">
+        <div class="section-label">[SPONSORS]</div>
+        <div class="sponsors-grid">
+            {{#foreach sponsors}}
+                {{#if canonical_url}}
+                    <a href="{{canonical_url}}"
+                       class="sponsor-item"
+                       title="{{title}}"
+                       target="_blank"
+                       rel="noopener sponsored">
+                        {{#if feature_image}}
+                            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                        {{else}}
+                            <span class="sponsor-name">{{title}}</span>
+                        {{/if}}
+                    </a>
+                {{else}}
+                    <div class="sponsor-item" title="{{title}}">
+                        {{#if feature_image}}
+                            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                        {{else}}
+                            <span class="sponsor-name">{{title}}</span>
+                        {{/if}}
+                    </div>
+                {{/if}}
+            {{/foreach}}
+        </div>
+    </section>
+    {{/if}}
+{{/get}}
 
 {{> pagination}}

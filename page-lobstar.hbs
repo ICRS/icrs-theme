@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    {{ghost_head}}
+</head>
+<body class="page-lobstar {{body_class}}">
+
+{{!--
+  LobSTAR data sources — all use Ghost INTERNAL tags (#-prefixed) so the
+  wider ICRS site can use its own tags without collision. Each internal tag
+  has slug "hash-{name}" which is what filters use.
+
+    Posts       → tag lobstar             (feature_image, title, excerpt)
+        Featured    → featured:true + lobstar (single highlighted post)
+    Sponsors    → tag #lobstar-sponsor    (feature_image = logo, custom_excerpt = sponsor URL)
+    Subsystems  → tag #lobstar-subsystem  (one post per rover subsystem)
+    Team        → tag #lobstar-team       (feature_image = headshot, title = name, custom_excerpt = bio)
+--}}
+
+<header class="lobstar-nav">
+    <div class="lobstar-container lobstar-nav-inner">
+        <a href="/" class="lobstar-nav-back">&larr; ICRS</a>
+        <a href="/lobstar/" class="lobstar-wordmark">Lob<em>STAR</em> Robotics</a>
+        <nav class="lobstar-nav-links">
+            <a href="#posts">Posts</a>
+            <a href="#sponsors">Sponsors</a>
+            <a href="#subsystems">Subsystems</a>
+            <a href="#team">Team</a>
+        </nav>
+    </div>
+</header>
+
+<main class="site-content">
+    {{#post}}
+    <section class="lobstar-hero">
+        <div class="lobstar-container lobstar-hero-inner">
+            <div class="lobstar-hero-top">
+                <h2 class="lob-title lobstar-hero-tagline">Introducing the <span class="serif"><span class="red"><strong><em>LOB</em></strong></span>-26</span></h2>
+            </div>
+
+            {{#if feature_image}}
+            <div class="lobstar-hero-image-wrap">
+                <img class="lobstar-hero-image" src="{{img_url feature_image size="xl"}}" alt="" loading="eager">
+                <span class="lobstar-hero-highlight" aria-hidden="true"></span>
+            </div>
+            {{else}}
+            <div class="lobstar-hero-image-wrap lobstar-hero-image-wrap-empty">
+                <div class="lobstar-hero-image lobstar-hero-image-placeholder" aria-hidden="true"></div>
+                <span class="lobstar-hero-highlight" aria-hidden="true"></span>
+            </div>
+            {{/if}}
+
+            <h1 class="lobstar-hero-title">{{title}}</h1>
+            
+
+            <div class="lobstar-hero-body lobstar-content">
+                {{content}}
+            </div>
+        </div>
+    </section>
+    {{/post}}
+
+    {{#get "posts" filter="featured:true+tag:lobstar" limit="1" as |featured_posts|}}
+        {{#if featured_posts}}
+            {{#foreach featured_posts}}
+            <section class="lobstar-featured-section lobstar-container">
+                <a class="lobstar-featured-post" href="{{url}}">
+                    <div class="lobstar-featured-media">
+                        {{#if feature_image}}
+                            <img src="{{img_url feature_image size="l"}}" alt="{{title}}" loading="lazy">
+                        {{else}}
+                            <div class="lobstar-featured-media-placeholder" aria-hidden="true"></div>
+                        {{/if}}
+                    </div>
+                    <div class="lobstar-featured-body">
+                        <time class="lobstar-card-meta" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                        <h3 class="lobstar-featured-title">{{title}}</h3>
+                        <p class="lobstar-featured-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="42"}}{{/if}}</p>
+                    </div>
+                </a>
+            </section>
+            {{/foreach}}
+        {{/if}}
+    {{/get}}
+
+    {{#get "posts" filter="tag:lobstar" limit="6" include="tags,authors" as |posts|}}
+        {{#if posts}}
+        <section id="posts" class="lobstar-section lobstar-container">
+            <h2 class="lobstar-section-heading">Posts</h2>
+            <div class="lobstar-posts-grid">
+                {{#foreach posts}}
+                    <a class="lobstar-card lobstar-post-card" href="{{url}}">
+                        {{#if feature_image}}
+                        <div class="lobstar-card-media">
+                            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                        </div>
+                        {{/if}}
+                        <div class="lobstar-card-body">
+                            <time class="lobstar-card-meta" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                            <h3 class="lobstar-card-title">{{title}}</h3>
+                            <p class="lobstar-card-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="22"}}{{/if}}</p>
+                        </div>
+                    </a>
+                {{/foreach}}
+            </div>
+        </section>
+        {{/if}}
+    {{/get}}
+
+    {{#get "posts" filter="tag:hash-lobstar-sponsor" limit="all" as |sponsors|}}
+        {{#if sponsors}}
+        <section id="sponsors" class="lobstar-section lobstar-container">
+            <h2 class="lobstar-section-heading">Sponsors</h2>
+            <div class="lobstar-sponsors-grid">
+                {{#foreach sponsors}}
+                    <div class="lobstar-sponsor">
+                        <div class="lobstar-sponsor-image">
+                            {{#if feature_image}}
+                                <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                            {{/if}}
+                        </div>
+                        <span class="lobstar-sponsor-name">{{title}}</span>
+                        {{#if custom_excerpt}}<p class="lobstar-sponsor-excerpt">{{custom_excerpt}}</p>{{/if}}
+                    </div>
+                {{/foreach}}
+            </div>
+        </section>
+        {{/if}}
+    {{/get}}
+
+    {{#get "posts" filter="tag:hash-lobstar-subsystem" limit="all" as |subsystems|}}
+        {{#if subsystems}}
+        <section id="subsystems" class="lobstar-section lobstar-container">
+            <h2 class="lobstar-section-heading">Subsystems</h2>
+            <div class="lobstar-rovers-grid">
+                {{#foreach subsystems}}
+                    <a class="lobstar-card lobstar-rover-card" href="{{url}}">
+                        {{#if feature_image}}
+                        <div class="lobstar-card-media">
+                            <img src="{{img_url feature_image size="l"}}" alt="{{title}}" loading="lazy">
+                        </div>
+                        {{/if}}
+                        <div class="lobstar-card-body">
+                            <h3 class="lobstar-card-title">{{title}}</h3>
+                            <p class="lobstar-card-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="30"}}{{/if}}</p>
+                        </div>
+                    </a>
+                {{/foreach}}
+            </div>
+        </section>
+        {{/if}}
+    {{/get}}
+
+    {{#get "posts" filter="tag:hash-lobstar-team" limit="all" order="published_at asc" as |team|}}
+        {{#if team}}
+        <section id="team" class="lobstar-section lobstar-container">
+            <h2 class="lobstar-section-heading">Team</h2>
+            <div class="lobstar-team-grid">
+                {{#foreach team}}
+                    <article class="lobstar-team-member">
+                        {{#if feature_image}}
+                        <img class="lobstar-team-avatar" src="{{img_url feature_image size="s"}}" alt="{{title}}" loading="lazy">
+                        {{else}}
+                        <div class="lobstar-team-avatar lobstar-team-avatar-placeholder" aria-hidden="true"></div>
+                        {{/if}}
+                        <h3 class="lobstar-team-name">{{title}}</h3>
+                        {{#if custom_excerpt}}<p class="lobstar-team-bio">{{custom_excerpt}}</p>{{/if}}
+                    </article>
+                {{/foreach}}
+            </div>
+        </section>
+        {{/if}}
+    {{/get}}
+</main>
+
+<footer class="lobstar-footer">
+    <div class="lobstar-container lobstar-footer-inner">
+        <span class="lobstar-wordmark">Lob<em>STAR</em> Robotics</span>
+        <span class="lobstar-footer-meta">A division of the Imperial College Robotics Society &middot; &copy; {{date format="YYYY"}}</span>
+    </div>
+</footer>
+
+{{ghost_foot}}
+</body>
+</html>
