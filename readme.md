@@ -88,9 +88,12 @@ For each post:
 
 For each sponsor post:
 
-- Feature image -> sponsor logo/image
+- Feature image -> sponsor logo/image (will fill the entire square polaroid space)
 - Title -> sponsor name
 - Custom excerpt -> supporting text (often used for URL or short note)
+- Primary tag (first tag) -> sponsor tier level (e.g., "Krill", "Gold", "Platinum")
+
+**Note on tier tags:** The tier label appears on the polaroid only if set as the post's **primary tag**. In Ghost Admin, ensure the tier tag appears first in the tag list to make it the primary tag.
 
 ### LobSTAR Subsystems (`#lobstar-subsystem`)
 
@@ -132,3 +135,17 @@ For each team post:
 - Featured Post section renders only when at least one post matches `featured:true+tag:lobstar`.
 - A featured LobSTAR post can appear in both the Featured section and the Posts grid.
 - If an image is missing in some LobSTAR sections, the theme may show a placeholder or text-only block.
+- **Sponsor tier tags:** The tier label on polaroids displays the post's primary tag. In Ghost Admin, set the tier tag (e.g., "Krill") as the first tag in the list to make it primary. The `#lobstar-sponsor` tag should be a secondary tag.
+
+## Theme customization (Ghost settings)
+
+The theme supports custom site settings available in Ghost Admin under **Settings > Design & Branding > Site-wide**:
+
+- `alert_banner_text`: Alert banner text displayed at the top of all pages (if set)
+- `footer_text`: Custom footer description text on all pages
+- `hero_tag_1_text`, `hero_tag_1_url`, `hero_tag_1_color`: First hero tag on ICRS landing page
+- `hero_tag_2_text`, `hero_tag_2_url`, `hero_tag_2_color`: Second hero tag on ICRS landing page
+- `hero_tag_3_text`, `hero_tag_3_url`, `hero_tag_3_color`: Third hero tag on ICRS landing page
+- `lobstar_support_url`: Support/donation URL for the "Support Us" button on LobSTAR Supporters section
+
+**Note:** The "Support Us" button only appears on the LobSTAR page if `lobstar_support_url` is configured.

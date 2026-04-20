@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
     {{#post}}{{#has tag="lobstar,hash-lobstar-post,lobstar-post"}}
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     {{/has}}{{/post}}
     {{ghost_head}}
 </head>
@@ -24,9 +24,13 @@
             <a href="/lobstar/" class="lobstar-wordmark">Lob<em>STAR</em> Robotics</a>
             <nav class="lobstar-nav-links">
                 <a href="/lobstar/#posts">Posts</a>
-                <a href="/lobstar/#rovers">Rovers</a>
+                <a href="/lobstar/#subsystems">Subsystems</a>
                 <a href="/lobstar/#team">Team</a>
             </nav>
+            <button class="lobstar-nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -69,24 +73,17 @@
         <section class="lobstar-section lobstar-container">
             <h2 class="lobstar-section-heading">More posts</h2>
             <div class="lobstar-posts-grid">
-                {{#next_post}}
-                    <a class="lobstar-card lobstar-post-card" href="{{url}}">
-                        {{#if feature_image}}<div class="lobstar-card-media"><img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy"></div>{{/if}}
-                        <div class="lobstar-card-body">
-                            <span class="lobstar-card-meta">Next &middot; {{date format="DD MMM YYYY"}}</span>
-                            <h3 class="lobstar-card-title">{{title}}</h3>
-                        </div>
-                    </a>
-                {{/next_post}}
-                {{#prev_post}}
-                    <a class="lobstar-card lobstar-post-card" href="{{url}}">
-                        {{#if feature_image}}<div class="lobstar-card-media"><img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy"></div>{{/if}}
-                        <div class="lobstar-card-body">
-                            <span class="lobstar-card-meta">Previous &middot; {{date format="DD MMM YYYY"}}</span>
-                            <h3 class="lobstar-card-title">{{title}}</h3>
-                        </div>
-                    </a>
-                {{/prev_post}}
+                {{#get "posts" filter="id:-{{id}}+tag:lobstar" limit="2" include="tags,authors" as |more_posts|}}
+                    {{#foreach more_posts}}
+                        <a class="lobstar-card lobstar-post-card" href="{{url}}">
+                            {{#if feature_image}}<div class="lobstar-card-media"><img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy"></div>{{/if}}
+                            <div class="lobstar-card-body">
+                                <span class="lobstar-card-meta">{{date format="DD MMM YYYY"}}</span>
+                                <h3 class="lobstar-card-title">{{title}}</h3>
+                            </div>
+                        </a>
+                    {{/foreach}}
+                {{/get}}
             </div>
         </section>
     </main>
@@ -169,12 +166,11 @@
         <div class="read-next">
             <div class="section-label">[READ MORE]</div>
             <div class="post-feed">
-                {{#next_post}}
-                    {{> post-card}}
-                {{/next_post}}
-                {{#prev_post}}
-                    {{> post-card}}
-                {{/prev_post}}
+                {{#get "posts" filter="id:-{{id}}+tag:icrs" limit="2" include="tags,authors" as |more_posts|}}
+                    {{#foreach more_posts}}
+                        {{> post-card}}
+                    {{/foreach}}
+                {{/get}}
             </div>
         </div>
     </main>

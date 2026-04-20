@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset "css/screen.css"}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     {{ghost_head}}
 </head>
 <body class="page-lobstar {{body_class}}">
@@ -34,6 +34,10 @@
             <a href="#subsystems">Subsystems</a>
             <a href="#team">Team</a>
         </nav>
+        <button class="lobstar-nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+        </button>
     </div>
 </header>
 
@@ -114,21 +118,48 @@
         {{/if}}
     {{/get}}
 
-    {{#get "posts" filter="tag:hash-lobstar-sponsor" limit="all" as |sponsors|}}
+    {{#get "posts" filter="tag:hash-lobstar-sponsor" limit="all" include="tags" as |sponsors|}}
         {{#if sponsors}}
         <section id="sponsors" class="lobstar-section lobstar-container">
-            <h2 class="lobstar-section-heading">Sponsors</h2>
-            <div class="lobstar-sponsors-grid">
+            <h2 class="lobstar-section-heading">Supporters</h2>
+            <p class="lobstar-polaroid-intro">LobSTAR Robotics is funded by our supports and could not continue without their generous support. If like what we do please consider supporting us</p>
+            <div class="lobstar-polaroid-board">
+                {{#if @custom.lobstar_support_url}}
+                    <a href="{{@custom.lobstar_support_url}}" class="lobstar-polaroid-sticker" title="Support LobSTAR">
+                        <span class="lobstar-sticker-label">Help support</span>
+                        <span class="lobstar-sticker-text">LobSTAR</span>
+                    </a>
+                {{/if}}
                 {{#foreach sponsors}}
-                    <div class="lobstar-sponsor">
-                        <div class="lobstar-sponsor-image">
-                            {{#if feature_image}}
-                                <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
-                            {{/if}}
+                    {{#if canonical_url}}
+                        <a class="lobstar-polaroid" href="{{canonical_url}}" target="_blank" rel="noopener sponsored" title="{{title}}">
+                            <div class="lobstar-polaroid-photo">
+                                {{#if feature_image}}
+                                    <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                                {{else}}
+                                    <span class="lobstar-polaroid-fallback">{{title}}</span>
+                                {{/if}}
+                            </div>
+                            <div class="lobstar-polaroid-caption">
+                                <span class="lobstar-polaroid-name">{{title}}</span>
+                                {{#if primary_tag}}<span class="lobstar-polaroid-tier">{{primary_tag.name}}</span>{{/if}}
+                            </div>
+                        </a>
+                    {{else}}
+                        <div class="lobstar-polaroid" title="{{title}}">
+                            <div class="lobstar-polaroid-photo">
+                                {{#if feature_image}}
+                                    <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                                {{else}}
+                                    <span class="lobstar-polaroid-fallback">{{title}}</span>
+                                {{/if}}
+                            </div>
+                            <div class="lobstar-polaroid-caption">
+                                <span class="lobstar-polaroid-name">{{title}}</span>
+                                {{#if primary_tag}}<span class="lobstar-polaroid-tier">{{primary_tag.name}}</span>{{/if}}
+                            </div>
                         </div>
-                        <span class="lobstar-sponsor-name">{{title}}</span>
-                        {{#if custom_excerpt}}<p class="lobstar-sponsor-excerpt">{{custom_excerpt}}</p>{{/if}}
-                    </div>
+                    {{/if}}
                 {{/foreach}}
             </div>
         </section>
