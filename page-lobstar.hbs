@@ -122,12 +122,12 @@
         {{#if sponsors}}
         <section id="sponsors" class="lobstar-section lobstar-container">
             <h2 class="lobstar-section-heading">Supporters</h2>
-            <p class="lobstar-polaroid-intro">LobSTAR Robotics is funded by our supports and could not continue without their generous support. If like what we do please consider supporting us</p>
+            <p class="lobstar-polaroid-intro">LobSTAR Robotics is funded by our supporters and could not continue without their generous donations. If you like what we do please consider supporting us emotionally or financially</p>
             <div class="lobstar-polaroid-board">
                 {{#if @custom.lobstar_support_url}}
                     <a href="{{@custom.lobstar_support_url}}" class="lobstar-polaroid-sticker" title="Support LobSTAR">
-                        <span class="lobstar-sticker-label">Help support</span>
-                        <span class="lobstar-sticker-text">LobSTAR</span>
+                        <span class="lobstar-sticker-label">Click Here!</span>
+                        <span class="lobstar-sticker-text">Support Us</span>
                     </a>
                 {{/if}}
                 {{#foreach sponsors}}
@@ -218,6 +218,7 @@
     </div>
 </footer>
 
+<script src="{{asset "js/main.js"}}"></script>
 {{ghost_foot}}
 </body>
 </html>

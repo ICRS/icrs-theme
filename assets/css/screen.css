@@ -1980,7 +1980,7 @@ body.page-lobstar a.lobstar-polaroid:hover {
     .lobstar-polaroid-board { gap: 1.5rem 1.25rem; }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     /* Collapse lobstar nav to a hamburger dropdown */
     .lobstar-nav-inner {
         position: relative;
@@ -2001,10 +2001,11 @@ body.page-lobstar a.lobstar-polaroid:hover {
     .lobstar-wordmark {
         font-size: 1.35rem;
         flex: 0 1 auto;
+        min-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    .lobstar-nav-back { font-size: 0.8rem; white-space: nowrap; }
+    .lobstar-nav-back { font-size: 0.8rem; white-space: nowrap; flex-shrink: 0; }
     .lobstar-nav-links {
         display: none;
         position: absolute;
@@ -2016,14 +2017,15 @@ body.page-lobstar a.lobstar-polaroid:hover {
         border-bottom: 1px solid var(--lobstar-rule);
         flex-direction: column;
         padding: 0.75rem 1.5rem 1rem;
-        gap: 0.25rem;
+        gap: 0;
         align-items: stretch;
         font-size: 1rem;
         z-index: 60;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
     }
     .lobstar-nav-links.is-open { display: flex; }
     .lobstar-nav-links a {
-        padding: 0.5rem 0;
+        padding: 0.75rem 0;
         border-bottom: 1px solid var(--lobstar-rule);
     }
     .lobstar-nav-links a:last-child { border-bottom: 0; }
@@ -2058,6 +2060,12 @@ body.page-lobstar a.lobstar-polaroid:hover {
     .lobstar-content { font-size: 1rem; }
     .lobstar-footer-inner { flex-direction: column; align-items: flex-start; }
     .lobstar-wordmark { font-size: 1.15rem; }
+}
+
+@media (max-width: 480px) {
+    .lobstar-nav-inner { padding: 0.6rem 1rem; gap: 0.5rem; }
+    .lobstar-wordmark { font-size: 1.05rem; }
+    .lobstar-nav-back { font-size: 0.75rem; }
 }
 
 /* Mixed-style headline utility — drop into a Ghost HTML card to mix Jost
@@ -2187,8 +2195,34 @@ body.page-lobstar a.lobstar-polaroid:hover {
         grid-template-columns: 1fr;
     }
 
-    .hero-inner {
+    .hero-inner,
+    .hero-icrs .hero-inner {
         grid-template-columns: 1fr;
+    }
+
+    .hero-icrs .hero-inner {
+        padding: var(--gap);
+        gap: var(--gap);
+        align-items: start;
+    }
+
+    .hero-logo-mask {
+        width: 100%;
+        height: clamp(6rem, 18vw, 10rem);
+        mask-position: center;
+        -webkit-mask-position: center;
+    }
+
+    .hero-massive-title {
+        font-size: clamp(5rem, 18vw, 10rem);
+    }
+
+    .hero-description {
+        margin-bottom: var(--gap);
+    }
+
+    .hero-tag {
+        font-size: 1.25rem;
     }
 
     .hero-decoration {
@@ -2272,8 +2306,20 @@ body.page-lobstar a.lobstar-polaroid:hover {
         gap: var(--gap);
     }
 
+    .hero-logo-mask {
+        height: clamp(4.5rem, 22vw, 7rem);
+    }
+
     .hero-massive-title {
         font-size: clamp(4rem, 22vw, 8rem);
+    }
+
+    .hero-tag {
+        font-size: 1.125rem;
+    }
+
+    .hero-tags-links {
+        gap: var(--gap-sm);
     }
 
     .post-feed-container,
