@@ -27,28 +27,50 @@
             </div>
         </div>
 
+        <style>
+            {{#if @custom.hero_tag_1_color}}
+            .hero-tag-1:hover { color: {{@custom.hero_tag_1_color}} !important; }
+            {{/if}}
+            {{#if @custom.hero_tag_2_color}}
+            .hero-tag-2:hover { color: {{@custom.hero_tag_2_color}} !important; }
+            {{/if}}
+            {{#if @custom.hero_tag_3_color}}
+            .hero-tag-3:hover { color: {{@custom.hero_tag_3_color}} !important; }
+            {{/if}}
+        </style>
         <div class="hero-teams">
             {{#if @custom.hero_tag_1_text}}
-                <a href="{{@custom.hero_tag_1_url}}" class="hero-tag" data-project="iprl">
-                    <svg class="hero-tag-icon" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="Group 62">
-                            <path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M41.5512 0.00399156C41.5148 0.0409243 41.4851 0.187943 41.4851 0.33069C41.4851 0.758843 41.1371 2.00129 40.828 2.67756C39.8008 4.92422 37.8027 6.62233 35.4552 7.24368C35.0721 7.34505 34.6298 7.42799 34.4722 7.42799C33.9714 7.42799 34.0715 7.57902 34.6101 7.63588C34.8953 7.66597 35.4996 7.81075 35.9531 7.95751C38.0387 8.63262 39.8887 10.302 40.828 12.3564C41.1402 13.0389 41.4851 14.2762 41.4851 14.7129C41.4851 15.2137 41.6361 15.0804 41.6933 14.5292C41.7739 13.7482 42.2713 12.353 42.7726 11.5013C43.3684 10.4892 44.5516 9.30577 45.5796 8.69394C46.4426 8.18035 47.7245 7.72158 48.5361 7.63588C49.0747 7.57902 49.1749 7.42799 48.6741 7.42799C48.2347 7.42799 47.0658 7.09249 46.3648 6.76525C44.9409 6.10047 43.5561 4.85276 42.7726 3.52879C42.2803 2.69679 41.7883 1.32502 41.6868 0.500847C41.6484 0.190613 41.5874 -0.0329412 41.5512 0.00399156Z" fill="currentColor"/>
-                            <path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M31.5138 17.4862C31.0293 12.594 30.7863 7.478 34.5868 2.56094C31.2439 5.15694 28.3969 8.17501 27.996 12.5894C27.8592 14.0945 27.9398 15.6238 28.0776 17.1515C23.6658 16.7943 19.5323 17.0034 16.0132 20.8012C12.6929 24.3845 13.3514 28.5396 14.3519 32.7343L14.3019 32.7259C12.9327 32.4932 11.6049 32.2677 10.3918 32.1946C6.03087 31.9325 2.86084 34.0066 0 37.1477C2.74536 34.6608 5.83813 32.9995 9.6126 33.3081C11.2887 33.445 13.0059 33.8502 14.7273 34.2727C15.1498 35.9942 15.555 37.7113 15.692 39.3874C16.0005 43.1619 14.3393 46.2547 11.8524 49C14.9935 46.1391 17.0676 42.9692 16.8053 38.6082C16.7325 37.3951 16.5068 36.0674 16.2742 34.6981L16.2656 34.6482C20.4604 35.6486 24.6156 36.3072 28.1989 32.9869C31.9967 29.4678 32.2057 25.3342 31.8487 20.9225C33.3762 21.0602 34.9056 21.1407 36.4106 21.004C40.8251 20.6031 43.843 17.7563 46.439 14.4133C41.522 18.2137 36.406 17.9708 31.5138 17.4862ZM28.4172 20.5827C24.5973 20.2455 20.9125 20.3118 17.7824 23.3703C15.2455 25.849 15.4506 29.4638 15.9956 33.0044C19.5362 33.5494 23.1509 33.7545 25.6298 31.2176C28.6883 28.0874 28.7545 24.4028 28.4172 20.5827Z" fill="currentColor"/>
-                        </g>
-                    </svg>
+                <a href="{{@custom.hero_tag_1_url}}" class="hero-tag hero-tag-1">
+                    {{#if @custom.hero_tag_1_logo}}
+                        <img src="{{@custom.hero_tag_1_logo}}" alt="" class="hero-tag-image">
+                    {{else}}
+                        <svg class="hero-tag-icon" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="Group 62">
+                                <path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M41.5512 0.00399156C41.5148 0.0409243 41.4851 0.187943 41.4851 0.33069C41.4851 0.758843 41.1371 2.00129 40.828 2.67756C39.8008 4.92422 37.8027 6.62233 35.4552 7.24368C35.0721 7.34505 34.6298 7.42799 34.4722 7.42799C33.9714 7.42799 34.0715 7.57902 34.6101 7.63588C34.8953 7.66597 35.4996 7.81075 35.9531 7.95751C38.0387 8.63262 39.8887 10.302 40.828 12.3564C41.1402 13.0389 41.4851 14.2762 41.4851 14.7129C41.4851 15.2137 41.6361 15.0804 41.6933 14.5292C41.7739 13.7482 42.2713 12.353 42.7726 11.5013C43.3684 10.4892 44.5516 9.30577 45.5796 8.69394C46.4426 8.18035 47.7245 7.72158 48.5361 7.63588C49.0747 7.57902 49.1749 7.42799 48.6741 7.42799C48.2347 7.42799 47.0658 7.09249 46.3648 6.76525C44.9409 6.10047 43.5561 4.85276 42.7726 3.52879C42.2803 2.69679 41.7883 1.32502 41.6868 0.500847C41.6484 0.190613 41.5874 -0.0329412 41.5512 0.00399156Z" fill="currentColor"/>
+                                <path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M31.5138 17.4862C31.0293 12.594 30.7863 7.478 34.5868 2.56094C31.2439 5.15694 28.3969 8.17501 27.996 12.5894C27.8592 14.0945 27.9398 15.6238 28.0776 17.1515C23.6658 16.7943 19.5323 17.0034 16.0132 20.8012C12.6929 24.3845 13.3514 28.5396 14.3519 32.7343L14.3019 32.7259C12.9327 32.4932 11.6049 32.2677 10.3918 32.1946C6.03087 31.9325 2.86084 34.0066 0 37.1477C2.74536 34.6608 5.83813 32.9995 9.6126 33.3081C11.2887 33.445 13.0059 33.8502 14.7273 34.2727C15.1498 35.9942 15.555 37.7113 15.692 39.3874C16.0005 43.1619 14.3393 46.2547 11.8524 49C14.9935 46.1391 17.0676 42.9692 16.8053 38.6082C16.7325 37.3951 16.5068 36.0674 16.2742 34.6981L16.2656 34.6482C20.4604 35.6486 24.6156 36.3072 28.1989 32.9869C31.9967 29.4678 32.2057 25.3342 31.8487 20.9225C33.3762 21.0602 34.9056 21.1407 36.4106 21.004C40.8251 20.6031 43.843 17.7563 46.439 14.4133C41.522 18.2137 36.406 17.9708 31.5138 17.4862ZM28.4172 20.5827C24.5973 20.2455 20.9125 20.3118 17.7824 23.3703C15.2455 25.849 15.4506 29.4638 15.9956 33.0044C19.5362 33.5494 23.1509 33.7545 25.6298 31.2176C28.6883 28.0874 28.7545 24.4028 28.4172 20.5827Z" fill="currentColor"/>
+                            </g>
+                        </svg>
+                    {{/if}}
                     {{@custom.hero_tag_1_text}}
                 </a>
             {{/if}}
             {{#if @custom.hero_tag_2_text}}
-                <a href="{{@custom.hero_tag_2_url}}" class="hero-tag" data-project="unibots">
-                    <svg class="hero-tag-icon" viewBox="0 0 32.4 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path id="Union" d="M25.0283 0C26.35 0 27.4219 1.07185 27.4219 2.39355C27.4217 3.71508 26.3499 4.78613 25.0283 4.78613C24.8497 4.78613 24.6762 4.76463 24.5088 4.72754L23.6357 6.44531C28.8394 9.14002 32.3962 14.5736 32.3965 20.8379C32.3965 22.2456 32.2164 23.6119 31.8789 24.9141H0.517578C0.180091 23.6119 0 22.2456 0 20.8379C0.000240555 15.3698 2.70964 10.5347 6.85938 7.60156L5.94727 5.73438C5.75933 5.7818 5.56302 5.81055 5.36035 5.81055C4.03882 5.81034 2.96777 4.73857 2.96777 3.41699C2.96791 2.09553 4.0389 1.02462 5.36035 1.02441C6.68198 1.02441 7.75377 2.0954 7.75391 3.41699C7.75391 4.16872 7.40637 4.83861 6.86426 5.27734L7.72168 7.03223C10.1874 5.51509 13.0908 4.63966 16.1982 4.63965C18.5148 4.6397 20.7171 5.12776 22.71 6.00391L23.5791 4.29492C23.0063 3.85775 22.6349 3.16972 22.6348 2.39355C22.6348 1.07185 23.7066 1.40448e-05 25.0283 0ZM11.3506 10.7412C10.6969 10.9128 10.4406 12.0949 10.7783 13.3818C11.1162 14.6688 11.9205 15.573 12.5742 15.4014C13.2274 15.2291 13.4831 14.0472 13.1455 12.7607C12.8077 11.4741 12.0042 10.5701 11.3506 10.7412ZM21.5469 10.3369C20.8956 10.5082 20.6419 11.6899 20.9795 12.9766C21.3173 14.2635 22.1189 15.1681 22.7705 14.9971C23.4218 14.8256 23.6766 13.6441 23.3389 12.3574C23.0011 11.0709 22.1983 10.1664 21.5469 10.3369Z" fill="currentColor"/>
-                    </svg>
+                <a href="{{@custom.hero_tag_2_url}}" class="hero-tag hero-tag-2">
+                    {{#if @custom.hero_tag_2_logo}}
+                        <img src="{{@custom.hero_tag_2_logo}}" alt="" class="hero-tag-image">
+                    {{else}}
+                        <svg class="hero-tag-icon" viewBox="0 0 32.4 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path id="Union" d="M25.0283 0C26.35 0 27.4219 1.07185 27.4219 2.39355C27.4217 3.71508 26.3499 4.78613 25.0283 4.78613C24.8497 4.78613 24.6762 4.76463 24.5088 4.72754L23.6357 6.44531C28.8394 9.14002 32.3962 14.5736 32.3965 20.8379C32.3965 22.2456 32.2164 23.6119 31.8789 24.9141H0.517578C0.180091 23.6119 0 22.2456 0 20.8379C0.000240555 15.3698 2.70964 10.5347 6.85938 7.60156L5.94727 5.73438C5.75933 5.7818 5.56302 5.81055 5.36035 5.81055C4.03882 5.81034 2.96777 4.73857 2.96777 3.41699C2.96791 2.09553 4.0389 1.02462 5.36035 1.02441C6.68198 1.02441 7.75377 2.0954 7.75391 3.41699C7.75391 4.16872 7.40637 4.83861 6.86426 5.27734L7.72168 7.03223C10.1874 5.51509 13.0908 4.63966 16.1982 4.63965C18.5148 4.6397 20.7171 5.12776 22.71 6.00391L23.5791 4.29492C23.0063 3.85775 22.6349 3.16972 22.6348 2.39355C22.6348 1.07185 23.7066 1.40448e-05 25.0283 0ZM11.3506 10.7412C10.6969 10.9128 10.4406 12.0949 10.7783 13.3818C11.1162 14.6688 11.9205 15.573 12.5742 15.4014C13.2274 15.2291 13.4831 14.0472 13.1455 12.7607C12.8077 11.4741 12.0042 10.5701 11.3506 10.7412ZM21.5469 10.3369C20.8956 10.5082 20.6419 11.6899 20.9795 12.9766C21.3173 14.2635 22.1189 15.1681 22.7705 14.9971C23.4218 14.8256 23.6766 13.6441 23.3389 12.3574C23.0011 11.0709 22.1983 10.1664 21.5469 10.3369Z" fill="currentColor"/>
+                        </svg>
+                    {{/if}}
                     {{@custom.hero_tag_2_text}}
                 </a>
             {{/if}}
             {{#if @custom.hero_tag_3_text}}
-                <a href="{{@custom.hero_tag_3_url}}" class="hero-tag" data-project="lobstar">
+                <a href="{{@custom.hero_tag_3_url}}" class="hero-tag hero-tag-3">
+                    {{#if @custom.hero_tag_3_logo}}
+                        <img src="{{@custom.hero_tag_3_logo}}" alt="" class="hero-tag-image">
+                    {{/if}}
                     {{@custom.hero_tag_3_text}}
                 </a>
             {{/if}}
@@ -78,16 +100,16 @@
 
 {{!-- ==========================================
   SECTION 3: Projects in Detail
-  Tag posts/pages with internal tag #project-detail in Ghost Admin.
-  Each post becomes a showcase card: feature_image, title, excerpt.
-  The post URL links to the full project page.
+  Pulls from Ghost PAGES with slugs: iprl, unibots, lobstar.
+  Each page's feature_image, title, and custom_excerpt become the card.
+  The card links to the page itself (e.g. /iprl/).
+  Just create pages with those slugs — they auto-get their templates.
   ========================================== --}}
 
-{{#get "posts" filter="tag:hash-project-detail" limit="3" include="tags" as |projects|}}
-    {{#if projects}}
-    <section class="projects-detail-container">
-        <div class="section-label">[PROJECTS]</div>
-        <div class="projects-detail-grid">
+<section class="projects-detail-container">
+    <div class="section-label">[PROJECTS]</div>
+    <div class="projects-detail-grid">
+        {{#get "pages" filter="slug:[iprl,unibots,lobstar]" limit="3" include="tags" as |projects|}}
             {{#foreach projects}}
             <a href="{{url}}" class="project-detail-card">
                 <div class="project-detail-image">
@@ -107,11 +129,37 @@
                 </div>
                 <div class="project-detail-body">
                     <h3 class="project-detail-title">{{title}}</h3>
-                    {{#if excerpt}}
+                    {{#if custom_excerpt}}
+                    <p class="project-detail-excerpt">{{custom_excerpt}}</p>
+                    {{else if excerpt}}
                     <p class="project-detail-excerpt">{{excerpt words="25"}}</p>
                     {{/if}}
                 </div>
             </a>
+            {{/foreach}}
+        {{/get}}
+    </div>
+</section>
+
+
+{{!-- ==========================================
+  SECTION 4: Sponsors / Partners
+  Tag posts with internal tag #sponsor in Ghost Admin.
+  ========================================== --}}
+
+{{#get "posts" filter="tag:hash-sponsor" limit="all" include="tags" as |sponsors|}}
+    {{#if sponsors}}
+    <section class="sponsors-container">
+        <div class="section-label">[SPONSORS / PARTNERS]</div>
+        <div class="sponsors-grid">
+            {{#foreach sponsors}}
+                <div class="sponsor-item" title="{{title}}">
+                    {{#if feature_image}}
+                        <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                    {{else}}
+                        <span class="sponsor-name">{{title}}</span>
+                    {{/if}}
+                </div>
             {{/foreach}}
         </div>
     </section>
@@ -120,7 +168,7 @@
 
 
 {{!-- ==========================================
-  SECTION 4: Posts Bank — Horizontal Scroll
+  SECTION 5: Posts Bank — Horizontal Scroll
   Uses existing #icrs-post tag. Shows a side-scrolling row
   of recent posts (news, events, project updates).
   ========================================== --}}
@@ -138,7 +186,7 @@
 
 
 {{!-- ==========================================
-  SECTION 5: Gallery — Slow Scroll Marquee
+  SECTION 6: Gallery — Slow Scroll Marquee
   Tag posts with internal tag #gallery in Ghost Admin.
   Each post's feature_image becomes a gallery photo.
   Falls back to placeholder blocks if no gallery posts exist.
@@ -189,39 +237,3 @@
 </section>
 
 
-{{!-- ==========================================
-  SECTION 6: Sponsors (if any exist)
-  ========================================== --}}
-
-{{#get "posts" filter="tag:hash-sponsor" limit="all" include="tags" as |sponsors|}}
-    {{#if sponsors}}
-    <section class="sponsors-container floating-block bordered-block">
-        <div class="section-label">[SPONSORS]</div>
-        <div class="sponsors-grid">
-            {{#foreach sponsors}}
-                {{#if canonical_url}}
-                    <a href="{{canonical_url}}"
-                       class="sponsor-item"
-                       title="{{title}}"
-                       target="_blank"
-                       rel="noopener sponsored">
-                        {{#if feature_image}}
-                            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
-                        {{else}}
-                            <span class="sponsor-name">{{title}}</span>
-                        {{/if}}
-                    </a>
-                {{else}}
-                    <div class="sponsor-item" title="{{title}}">
-                        {{#if feature_image}}
-                            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
-                        {{else}}
-                            <span class="sponsor-name">{{title}}</span>
-                        {{/if}}
-                    </div>
-                {{/if}}
-            {{/foreach}}
-        </div>
-    </section>
-    {{/if}}
-{{/get}}

@@ -1,0 +1,92 @@
+{{!< default}}
+
+{{!--
+  IPRL Project Page
+  ================
+  This page uses the ICRS-native styling (blue background, monospace type)
+  but provides a dedicated space for the IPRL project with sections for:
+
+  Data sources — all use Ghost INTERNAL tags (#-prefixed):
+    Posts       → tag iprl                (feature_image, title, excerpt)
+    Team        → tag #iprl-team          (feature_image = headshot, title = name, custom_excerpt = bio)
+
+  To use: create a PAGE in Ghost with slug "iprl", it will auto-use this template.
+--}}
+
+<section class="project-page-hero">
+    <div class="project-page-container">
+        {{#post}}
+        <div class="project-page-hero-inner">
+            <div class="project-page-hero-text">
+                <h1 class="project-page-title">IPRL</h1>
+                <p class="project-page-subtitle">Imperial College Planetary Robotics Lab</p>
+                <div class="project-page-body">
+                    {{content}}
+                </div>
+            </div>
+            <div class="project-page-hero-media">
+                {{#if feature_image}}
+                    <img src="{{img_url feature_image size="xl"}}" alt="{{title}}" loading="eager">
+                {{else}}
+                    <div class="project-page-hero-placeholder"></div>
+                {{/if}}
+            </div>
+        </div>
+        {{/post}}
+    </div>
+</section>
+
+
+{{!-- Posts --}}
+{{#get "posts" filter="tag:iprl" limit="9" include="tags,authors" as |posts|}}
+    {{#if posts}}
+    <section id="posts" class="project-page-section">
+        <div class="project-page-container">
+            <h2 class="project-page-section-heading">[POSTS]</h2>
+            <div class="project-page-posts-grid">
+                {{#foreach posts}}
+                    <a class="project-page-card" href="{{url}}">
+                        {{#if feature_image}}
+                        <div class="project-page-card-media">
+                            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                        </div>
+                        {{else}}
+                        <div class="project-page-card-media project-page-card-placeholder"></div>
+                        {{/if}}
+                        <div class="project-page-card-body">
+                            <time class="project-page-card-meta" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD.MM.YY"}}</time>
+                            <h3 class="project-page-card-title">{{title}}</h3>
+                            <p class="project-page-card-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="22"}}{{/if}}</p>
+                        </div>
+                    </a>
+                {{/foreach}}
+            </div>
+        </div>
+    </section>
+    {{/if}}
+{{/get}}
+
+
+{{!-- Team --}}
+{{#get "posts" filter="tag:hash-iprl-team" limit="all" order="published_at asc" as |team|}}
+    {{#if team}}
+    <section id="team" class="project-page-section">
+        <div class="project-page-container">
+            <h2 class="project-page-section-heading">[TEAM]</h2>
+            <div class="project-page-team-grid">
+                {{#foreach team}}
+                    <article class="project-page-team-member">
+                        {{#if feature_image}}
+                        <img class="project-page-team-avatar" src="{{img_url feature_image size="s"}}" alt="{{title}}" loading="lazy">
+                        {{else}}
+                        <div class="project-page-team-avatar project-page-team-avatar-placeholder"></div>
+                        {{/if}}
+                        <h3 class="project-page-team-name">{{title}}</h3>
+                        {{#if custom_excerpt}}<p class="project-page-team-bio">{{custom_excerpt}}</p>{{/if}}
+                    </article>
+                {{/foreach}}
+            </div>
+        </div>
+    </section>
+    {{/if}}
+{{/get}}

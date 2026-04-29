@@ -54,11 +54,15 @@
       },
       "hero_tag_1_url": {
         "type": "text",
-        "default": "/tag/iprl/"
+        "default": "/iprl/"
       },
       "hero_tag_1_color": {
         "type": "color",
         "default": "#FF5C00"
+      },
+      "hero_tag_1_logo": {
+        "type": "image",
+        "description": "Optional logo image for project 1"
       },
       "hero_tag_2_text": {
         "type": "text",
@@ -66,23 +70,31 @@
       },
       "hero_tag_2_url": {
         "type": "text",
-        "default": "/tag/unibots/"
+        "default": "/unibots/"
       },
       "hero_tag_2_color": {
         "type": "color",
         "default": "#00B523"
       },
+      "hero_tag_2_logo": {
+        "type": "image",
+        "description": "Optional logo image for project 2"
+      },
       "hero_tag_3_text": {
         "type": "text",
-        "default": ""
+        "default": "LobSTAR"
       },
       "hero_tag_3_url": {
         "type": "text",
-        "default": ""
+        "default": "/lobstar/"
       },
       "hero_tag_3_color": {
         "type": "color",
         "default": "#001EFF"
+      },
+      "hero_tag_3_logo": {
+        "type": "image",
+        "description": "Optional logo image for project 3"
       },
       "lobstar_support_url": {
         "type": "text",
