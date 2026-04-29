@@ -4,6 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{meta_title}}</title>
+    <style>
+        @font-face {
+            font-family: 'London Underground';
+            src: url('{{asset "fonts/LondonUnderground.woff2"}}') format('woff2'),
+                 url('{{asset "fonts/LondonUnderground.woff"}}') format('woff'),
+                 url('{{asset "fonts/LondonUnderground.ttf"}}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
     <link rel="stylesheet" href="{{asset "css/screen.css"}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

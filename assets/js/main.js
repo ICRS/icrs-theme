@@ -36,6 +36,32 @@
     window.addEventListener('load', updateCompactNav);
     window.addEventListener('resize', updateCompactNav);
 
+    // ---- Sticky header: add .is-stuck when scrolled past initial padding ----
+    var stickyContainer = document.querySelector('.sticky-header-container');
+    if (stickyContainer) {
+        var stuckThreshold = 10; // px scrolled before switching to stuck mode
+
+        function updateStuck() {
+            if (window.scrollY > stuckThreshold) {
+                stickyContainer.classList.add('is-stuck');
+            } else {
+                stickyContainer.classList.remove('is-stuck');
+            }
+        }
+
+        updateStuck();
+        window.addEventListener('scroll', updateStuck, { passive: true });
+    }
+
+    // ---- Win-panel popup animation on page load ----
+    var winPanel = document.querySelector('.win-panel');
+    if (winPanel) {
+        // Small delay so the animation is visible after page renders
+        setTimeout(function () {
+            winPanel.classList.add('is-visible');
+        }, 500);
+    }
+
     // Lobstar hamburger nav
     var lobToggle = document.querySelector('.lobstar-nav-toggle');
     var lobLinks = document.querySelector('.lobstar-nav-links');
