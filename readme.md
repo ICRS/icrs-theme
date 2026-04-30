@@ -137,6 +137,89 @@ For each team post:
 - If an image is missing in some LobSTAR sections, the theme may show a placeholder or text-only block.
 - **Sponsor tier tags:** The tier label on polaroids displays the post's primary tag. In Ghost Admin, set the tier tag (e.g., "Krill") as the first tag in the list to make it primary. The `#lobstar-sponsor` tag should be a secondary tag.
 
+## Event blocks (in-post)
+
+Posts can include styled event cards using a single `<div data-event>` HTML card. The theme rewrites it on the published page into a Windows-style window with title bar, image, meta rows, description, sign-up link, and an "add to calendar" button.
+
+### Inserting an event
+
+In the Ghost editor type `/html` and paste:
+
+```html
+<div data-event
+     data-title="Build Night"
+     data-when="Fri 12 Jun 2026 · 18:00–21:00"
+     data-start="2026-06-12T18:00"
+     data-end="2026-06-12T21:00"
+     data-where="Imperial College, RSM 1.51"
+     data-price="Free for members"
+     data-image="https://your-image-url.jpg"
+     data-cta="https://signup-url"
+     data-cta-label="sign up">
+  Bring your own project. Pizza at 19:00. Multiple paragraphs are supported — leave a blank line between them.
+</div>
+```
+
+Save the HTML card as a Ghost snippet named `event` so `/event` inserts it next time.
+
+### Available attributes
+
+All attributes are optional except `data-event` itself. Drop any line and that piece won't render.
+
+**Content**
+
+- `data-title` — heading inside the card
+- `data-when` — human-readable display string for the date/time row (e.g. `Fri 12 Jun 2026 · 18:00`)
+- `data-where` — location row
+- `data-price` — price row
+- `data-image` — feature image URL (no drag-and-drop; paste the URL of an image uploaded elsewhere)
+- `data-cta` — sign-up link URL
+- `data-cta-label` — link text, defaults to `sign up`
+- `data-label` — title bar label, defaults to `EVENT`
+
+**Calendar (machine-readable times)**
+
+Including these makes the "add to calendar" button appear in the bottom-right corner.
+
+- `data-start` — ISO 8601 datetime, **required** for the calendar button (e.g. `2026-06-12T18:00`)
+- `data-end` — ISO 8601 datetime, optional
+- `data-duration` — minutes, used if `data-end` is omitted, defaults to `60`
+- `data-calendar-label` — accessible name / tooltip, defaults to `add to calendar`
+
+Times are treated as **floating local time** — "18:00 wherever you are" — so any timezone suffix (`Z`, `+01:00`) is stripped before parsing. The calendar button opens a small dropdown letting the reader pick **Google**, **Outlook**, or **Apple / iCal**. Google and Outlook open a pre-filled "save event?" prompt in a new tab; Apple downloads a `.ics` file.
+
+**Color overrides** (per-card)
+
+Each maps to a CSS custom property on the card wrapper:
+
+- `data-color` — title bar background (default `#000000`)
+- `data-title-color` — title bar text + button border color (default `#FFFFFF`)
+- `data-bg` — window body background (default `#FFFFFF`)
+- `data-fg` — window body text (default `#000000`)
+- `data-shadow` — drop-shadow color (default `#000000`)
+- `data-accent` — link / button hover color (default `#001EFF`)
+
+Example using LobSTAR colors:
+
+```html
+<div data-event
+     data-color="#001EFF"
+     data-accent="#F2FF00"
+     data-label="LOBSTAR"
+     data-title="Lab tour"
+     data-start="2026-06-20T14:00"
+     data-where="EEE 505">
+  Open lab session for new members.
+</div>
+```
+
+### Notes and gotchas
+
+- The Ghost editor preview shows the raw `<div data-event>` HTML — the styled card only appears on the published post.
+- No drag-and-drop image upload. To get a hosted URL, upload via a temporary `/image` card, copy the rendered URL, paste into `data-image`, then delete the temporary card.
+- All text is set via `textContent` so attribute values can't inject HTML.
+- The implementation lives in `assets/js/main.js` (`renderEventCards`, `buildCalendarButton`, ICS / Google / Outlook URL builders) and `assets/css/screen.css` (section "9b. Event Card").
+
 ## Theme customization (Ghost settings)
 
 The theme supports custom site settings available in Ghost Admin under **Settings > Design & Branding > Site-wide**:

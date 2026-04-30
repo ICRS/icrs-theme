@@ -29,6 +29,10 @@
     --theme-primary: var(--color-dark-blue);
     --theme-card-bg: var(--color-white);
     --theme-muted: #666;
+    --button-bg: var(--color-light-grey);
+    --button-fg: var(--color-black);
+    --button-border: var(--color-black);
+    --button-shadow: rgba(0, 0, 0, 0.45);
 
     /* Typography */
     --font-mono: 'Geist Mono', ui-monospace, 'Cascadia Code', 'Fira Mono', 'Droid Sans Mono', monospace;
@@ -112,6 +116,34 @@ a {
 
 a:hover {
     color: var(--color-white);
+}
+
+button {
+    font: inherit;
+    color: var(--button-fg);
+    background: var(--button-bg);
+    border: 2px solid var(--button-border);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--button-shadow);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+}
+
+button:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--button-shadow);
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--button-shadow);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--color-alert);
+    outline-offset: 2px;
 }
 
 img {
@@ -295,11 +327,9 @@ h6 {
 /* Nav toggle (mobile) */
 .nav-toggle {
     display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
     width: 24px;
     height: 20px;
+    padding: 0;
     position: relative;
     flex-shrink: 0;
 }
@@ -308,7 +338,7 @@ h6 {
     display: block;
     width: 100%;
     height: 2px;
-    background: var(--color-white);
+    background: currentColor;
     position: absolute;
     left: 0;
     transition: transform 0.2s ease, opacity 0.2s ease;
@@ -1398,6 +1428,398 @@ h6 {
     padding: 0 var(--gap) var(--gap);
 }
 
+/* ICRS post buttons — flat, bracketed, hover inverts. Matches the
+   [LABEL] / .post-tags-item / section-label aesthetic used throughout
+   the theme. Two variants: default (border-only) and .kg-btn-accent
+   (filled blue, hover flips to alert yellow). */
+
+.gh-content .kg-button-card {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: var(--gap) 0;
+    text-align: left;
+}
+
+.gh-content .kg-button-card.kg-align-center {
+    text-align: center;
+}
+
+.gh-content .kg-button-card.kg-align-right {
+    text-align: right;
+}
+
+.gh-content button,
+.gh-content .button,
+.gh-content a.button,
+.gh-content .kg-button-card .kg-btn,
+.gh-content .kg-button-card a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    padding: 10px 16px;
+    background: transparent;
+    color: var(--theme-text);
+    border: 2px solid currentColor;
+    border-radius: 0;
+    box-shadow: none;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.gh-content button::before,
+.gh-content .button::before,
+.gh-content a.button::before,
+.gh-content .kg-button-card .kg-btn::before,
+.gh-content .kg-button-card a::before {
+    content: "[";
+}
+
+.gh-content button::after,
+.gh-content .button::after,
+.gh-content a.button::after,
+.gh-content .kg-button-card .kg-btn::after,
+.gh-content .kg-button-card a::after {
+    content: "]";
+}
+
+.gh-content button:hover,
+.gh-content .button:hover,
+.gh-content a.button:hover,
+.gh-content .kg-button-card .kg-btn:hover,
+.gh-content .kg-button-card a:hover {
+    background: var(--theme-text);
+    color: var(--theme-bg);
+    transform: none;
+    box-shadow: none;
+}
+
+.gh-content button:active,
+.gh-content .button:active,
+.gh-content a.button:active,
+.gh-content .kg-button-card .kg-btn:active,
+.gh-content .kg-button-card a:active {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Accent variant — filled blue, inverts to alert yellow on hover */
+
+.gh-content .kg-button-card .kg-btn-accent {
+    background: var(--color-dark-blue);
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.gh-content .kg-button-card .kg-btn-accent:hover {
+    background: var(--color-alert);
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.gh-content button:focus-visible,
+.gh-content .button:focus-visible,
+.gh-content a.button:focus-visible,
+.gh-content .kg-button-card .kg-btn:focus-visible,
+.gh-content .kg-button-card a:focus-visible {
+    outline: 2px solid var(--color-alert);
+    outline-offset: 2px;
+}
+
+
+/* --------------------------------------------------------------------------
+   9b. Event Card (insert via /event snippet)
+   -------------------------------------------------------------------------- */
+
+.event-card {
+    --event-titlebar-bg: var(--color-black);
+    --event-titlebar-fg: var(--color-white);
+    --event-window-bg: var(--color-white);
+    --event-window-fg: var(--color-black);
+    --event-shadow: var(--color-black);
+    --event-accent: var(--color-dark-blue);
+    --event-calendar-bg: var(--color-white);
+    --event-calendar-fg: var(--color-black);
+    --event-calendar-border: var(--color-black);
+    --event-calendar-menu-bg: var(--color-white);
+    --event-calendar-menu-fg: var(--color-black);
+
+    position: relative;
+    margin: 2.5em 0 2.5em 8px;
+    font-family: var(--font-mono);
+    color: var(--event-window-fg);
+}
+
+.event-card::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 100%;
+    height: 100%;
+    background: var(--event-shadow);
+    border: 2px solid var(--event-shadow);
+    z-index: 0;
+}
+
+.event-card-window {
+    position: relative;
+    z-index: 1;
+    background: var(--event-window-bg);
+    border: 2px solid var(--color-black);
+}
+
+.event-card-titlebar {
+    background: var(--event-titlebar-bg);
+    padding: 6px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-sm);
+}
+
+.event-card-titlebar-label {
+    color: var(--event-titlebar-fg);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    padding-left: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.event-card-titlebar-buttons {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.event-card-titlebar-buttons span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--event-titlebar-fg);
+    color: var(--event-titlebar-fg);
+    font-size: 14px;
+    line-height: 1;
+    user-select: none;
+    background: transparent;
+}
+
+.event-card-body {
+    padding: var(--gap-lg) var(--gap);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.event-card-media {
+    border: 2px solid var(--color-black);
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-light-grey);
+}
+
+.event-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.event-card-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--event-window-fg);
+}
+
+.event-card-meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px var(--gap);
+    font-size: 0.9375rem;
+    margin: 0;
+}
+
+.event-card-meta dt {
+    font-weight: 700;
+    color: var(--event-window-fg);
+    align-self: baseline;
+}
+
+.event-card-meta dt::after {
+    content: ":";
+}
+
+.event-card-meta dd {
+    margin: 0;
+    color: var(--event-window-fg);
+}
+
+.event-card-description {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--event-window-fg);
+}
+
+.event-card-description p {
+    margin: 0;
+}
+
+.event-card-description p + p {
+    margin-top: 0.75em;
+}
+
+.event-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    align-items: center;
+}
+
+.gh-content .event-card-cta {
+    color: var(--event-window-fg);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.gh-content .event-card-cta::before {
+    content: "<";
+}
+
+.gh-content .event-card-cta::after {
+    content: ">";
+}
+
+.gh-content .event-card-cta:hover {
+    color: var(--event-accent);
+}
+
+/* Calendar button — sits bottom-right of the body. Flat icon, no border
+   (the surrounding card already provides chrome). */
+
+.event-card-calendar-wrapper {
+    position: relative;
+    display: flex;
+    margin-left: auto;
+}
+
+.gh-content .event-card-calendar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--event-calendar-border);
+    background: var(--event-calendar-bg);
+    color: var(--event-calendar-fg);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 1;
+    transition: opacity 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 600;
+}
+
+.gh-content .event-card-calendar::before,
+.gh-content .event-card-calendar::after {
+    content: none;
+}
+
+.gh-content .event-card-calendar svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.gh-content .event-card-calendar:hover,
+.event-card-calendar-wrapper.is-open .event-card-calendar {
+    opacity: 1;
+    color: var(--event-accent);
+    background: var(--color-light-grey);
+}
+
+.event-card-calendar-menu {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    right: 0;
+    z-index: 10;
+    min-width: 150px;
+    background: var(--event-calendar-menu-bg);
+    border: 1px solid var(--event-calendar-border);
+    display: none;
+    padding: 4px 0;
+}
+
+.event-card-calendar-wrapper.is-open .event-card-calendar-menu {
+    display: block;
+}
+
+.gh-content .event-card-calendar-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    padding: 8px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--event-calendar-menu-fg);
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 600;
+}
+
+.gh-content .event-card-calendar-option::before,
+.gh-content .event-card-calendar-option::after {
+    content: none;
+}
+
+.gh-content .event-card-calendar-option:hover,
+.gh-content .event-card-calendar-option:focus-visible {
+    background: var(--color-light-grey);
+    color: var(--event-accent);
+    outline: none;
+}
+
+@media (max-width: 640px) {
+    .event-card-meta {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .event-card-meta dt {
+        margin-top: 6px;
+    }
+
+    .event-card-meta dt:first-child {
+        margin-top: 0;
+    }
+}
+
 
 /* --------------------------------------------------------------------------
    10. Post Tags Section
@@ -1966,22 +2388,23 @@ body.page-lobstar a.lobstar-wordmark:hover {
 /* Lobstar mobile hamburger toggle */
 .lobstar-nav-toggle {
     display: none;
-    background: none;
-    border: 1px solid var(--lobstar-rule);
-    cursor: pointer;
     width: 36px;
     height: 32px;
     padding: 0;
     position: relative;
     justify-self: end;
     flex-shrink: 0;
+    color: var(--lobstar-ink);
+    background: var(--lobstar-cream);
+    border-color: var(--lobstar-ink);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .lobstar-nav-toggle span {
     display: block;
     width: 18px;
     height: 2px;
-    background: var(--lobstar-ink);
+    background: currentColor;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -2630,6 +3053,77 @@ body.page-lobstar a.lobstar-polaroid:hover {
 .lobstar-content pre code {
     background: transparent;
     padding: 0;
+}
+
+/* LobSTAR post buttons — magazine-style filled red, hover inverts to outline */
+
+.lobstar-content .kg-button-card {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 1.75rem 0;
+    text-align: left;
+}
+
+.lobstar-content .kg-button-card.kg-align-center { text-align: center; }
+.lobstar-content .kg-button-card.kg-align-right { text-align: right; }
+
+.lobstar-content button,
+.lobstar-content .kg-button-card .kg-btn,
+.lobstar-content .kg-button-card a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    background: var(--lobstar-red);
+    color: var(--lobstar-cream);
+    border: 2px solid var(--lobstar-red);
+    border-radius: 0;
+    box-shadow: none;
+    text-decoration: none;
+    font-family: var(--lobstar-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lobstar-content button:hover,
+.lobstar-content .kg-button-card .kg-btn:hover,
+.lobstar-content .kg-button-card a:hover {
+    background: var(--lobstar-cream);
+    color: var(--lobstar-red);
+    transform: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.lobstar-content button:active,
+.lobstar-content .kg-button-card .kg-btn:active,
+.lobstar-content .kg-button-card a:active {
+    transform: none;
+    box-shadow: none;
+}
+
+.lobstar-content .kg-button-card .kg-btn-accent {
+    background: transparent;
+    color: var(--lobstar-red);
+    border-color: var(--lobstar-red);
+}
+
+.lobstar-content .kg-button-card .kg-btn-accent:hover {
+    background: var(--lobstar-red);
+    color: var(--lobstar-cream);
+}
+
+.lobstar-content button:focus-visible,
+.lobstar-content .kg-button-card .kg-btn:focus-visible,
+.lobstar-content .kg-button-card a:focus-visible {
+    outline: 2px solid var(--lobstar-red);
+    outline-offset: 3px;
 }
 
 /* Footer */
