@@ -440,6 +440,51 @@
         next.addEventListener('click', function () { step(1); });
     });
 
+    // IPRL hamburger nav
+    var iprlToggle = document.querySelector('.iprl-nav-toggle');
+    var iprlNav = document.querySelector('.iprl-nav');
+    var iprlHeader = document.querySelector('.iprl-header');
+
+    if (iprlToggle && iprlNav) {
+        iprlToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = iprlNav.classList.toggle('is-open');
+            iprlToggle.classList.toggle('is-active', isOpen);
+            iprlToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (iprlHeader && !iprlHeader.contains(e.target) && iprlNav.classList.contains('is-open')) {
+                iprlNav.classList.remove('is-open');
+                iprlToggle.classList.remove('is-active');
+                iprlToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close after following a link
+        iprlNav.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+                iprlNav.classList.remove('is-open');
+                iprlToggle.classList.remove('is-active');
+                iprlToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    // IPRL sticky header height — exposed as a CSS var so other sticky
+    // elements (e.g. the Archive year-tabs bar) can stick just below it
+    // instead of at top:0, where they'd be hidden underneath it. The
+    // header's height varies with viewport width because the eyebrow bar
+    // text wraps differently, so this is measured, not hardcoded.
+    if (iprlHeader) {
+        var setIprlHeaderHeight = function () {
+            document.documentElement.style.setProperty('--iprl-header-height', iprlHeader.offsetHeight + 'px');
+        };
+        setIprlHeaderHeight();
+        window.addEventListener('resize', setIprlHeaderHeight);
+        window.addEventListener('load', setIprlHeaderHeight);
+    }
+
     // Lobstar hamburger nav
     var lobToggle = document.querySelector('.lobstar-nav-toggle');
     var lobLinks = document.querySelector('.lobstar-nav-links');

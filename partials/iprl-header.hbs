@@ -9,12 +9,18 @@
             <a href="/iprl-shop/" class="{{#if activeShop}}is-active{{/if}}">Shop</a>
             <a href="/iprl-archive/" class="{{#if activeArchive}}is-active{{/if}}">Archive</a>
             <a href="/iprl/#supporters" class="{{#if activeSupport}}is-active{{/if}}">Support Us</a>
-            <a href="{{#if @custom.iprl_join_url}}{{@custom.iprl_join_url}}{{else}}/iprl/#join{{/if}}" class="iprl-nav-cta">Join the Lab</a>
         </nav>
+        <div class="iprl-header-actions">
+            <a href="{{#if @custom.iprl_join_url}}{{@custom.iprl_join_url}}{{else}}/iprl/#join{{/if}}" class="iprl-nav-cta">Join the Lab</a>
+            <button type="button" class="iprl-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </div>
     {{#if showEyebrow}}
     <div class="iprl-header-eyebrow-bar">
-        <div class="iprl-eyebrow iprl-hero-eyebrow">European Rover Challenge &middot; Imperial College Robotics Society</div>
+        <div class="iprl-eyebrow iprl-hero-eyebrow">European Rover Challenge<span class="iprl-hero-eyebrow-extra"> &middot; Imperial College Robotics Society</span></div>
     </div>
     {{/if}}
 </header>
