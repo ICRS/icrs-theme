@@ -390,6 +390,56 @@
 
     renderEventCards();
 
+    // ---- IPRL news byline avatars: fill initials from data-iprl-initials ----
+    var iprlAvatars = document.querySelectorAll('.iprl-avatar[data-iprl-initials]');
+    Array.prototype.forEach.call(iprlAvatars, function (node) {
+        var name = node.getAttribute('data-iprl-initials') || '';
+        var initials = name
+            .split(/\s+/)
+            .filter(Boolean)
+            .slice(0, 2)
+            .map(function (part) { return part.charAt(0).toUpperCase(); })
+            .join('');
+        node.textContent = initials;
+    });
+
+    // ---- IPRL shop product titles: split "Name | Price" into two elements ----
+    var shopTitles = document.querySelectorAll('.iprl-shop-product-title');
+    Array.prototype.forEach.call(shopTitles, function (node) {
+        var parts = node.textContent.split('|');
+        if (parts.length < 2) return;
+        var price = parts.pop().trim();
+        node.textContent = parts.join('|').trim();
+        var priceEl = document.createElement('span');
+        priceEl.className = 'iprl-shop-product-price';
+        priceEl.textContent = price;
+        node.parentNode.appendChild(priceEl);
+    });
+
+    // ---- IPRL gallery carousel: prev/next arrows scroll by one item ----
+    // Uses behavior: 'instant', not 'smooth' — this track has scroll-snap
+    // enabled, and native smooth-scroll fights scroll-snap badly enough
+    // (in some browsers it silently snaps straight back to the start
+    // instead of moving at all). The browser still resolves an instant
+    // scrollBy to the nearest snap point, so the motion between cards
+    // reads as a clean cut rather than a slide, but it reliably works.
+    var galleryCarousels = document.querySelectorAll('.iprl-gallery-carousel');
+    Array.prototype.forEach.call(galleryCarousels, function (carousel) {
+        var track = carousel.querySelector('.iprl-gallery-body');
+        var prev = carousel.querySelector('.iprl-gallery-arrow-prev');
+        var next = carousel.querySelector('.iprl-gallery-arrow-next');
+        if (!track || !prev || !next) return;
+
+        function step(direction) {
+            var item = track.querySelector('.kg-gallery-image, .kg-image-card');
+            var amount = item ? item.getBoundingClientRect().width + 14 : track.clientWidth * 0.8;
+            track.scrollBy({ left: direction * amount, behavior: 'instant' });
+        }
+
+        prev.addEventListener('click', function () { step(-1); });
+        next.addEventListener('click', function () { step(1); });
+    });
+
     // Lobstar hamburger nav
     var lobToggle = document.querySelector('.lobstar-nav-toggle');
     var lobLinks = document.querySelector('.lobstar-nav-links');

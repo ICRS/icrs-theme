@@ -99,7 +99,17 @@
       "lobstar_support_url": {
         "type": "text",
         "default": "",
-        "description": "Support/donation URL for the 'Support Us' button on LobSTAR Supporters section (leave empty to hide button)"
+        "description": "Support/donation URL for LobSTAR's 'Support Us' button (leave empty to hide)"
+      },
+      "iprl_join_url": {
+        "type": "text",
+        "default": "",
+        "description": "'Join the Lab' link destination on the IPRL page (leave empty to link to the page's own footer)"
+      },
+      "icu_shop_url": {
+        "type": "text",
+        "default": "",
+        "description": "ICU online store URL for the IPRL Shop page's 'Shop on ICU' button (leave empty to hide)"
       }
     }
   }

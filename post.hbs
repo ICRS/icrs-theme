@@ -10,10 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
     {{#post}}{{#has tag="lobstar,hash-lobstar-post,lobstar-post"}}
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-    {{/has}}{{/post}}
+    {{else}}{{#has tag="iprl"}}
+    <style>
+        @font-face { font-family: 'Tw Cen MT'; src: url('{{asset "fonts/iprl/TwCenMT.ttf"}}') format('truetype'); font-weight: 400 900; font-display: swap; }
+        @font-face { font-family: 'Tw Cen MT Cond ExtraBold'; src: url('{{asset "fonts/iprl/TwCenMTStdExtraBoldCond.otf"}}') format('opentype'); font-weight: 800; font-display: swap; }
+        @font-face { font-family: 'IntoDotMatrix'; src: url('{{asset "fonts/iprl/IntoDotMatrix.ttf"}}') format('truetype'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IPRL Inter'; src: url('{{asset "fonts/iprl/Inter-Variable.ttf"}}') format('truetype'); font-weight: 100 900; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'IPRL Inter'; src: url('{{asset "fonts/iprl/Inter-Italic-Variable.ttf"}}') format('truetype'); font-weight: 100 900; font-style: italic; font-display: swap; }
+    </style>
+    {{/has}}{{/has}}{{/post}}
     {{ghost_head}}
 </head>
-<body class="{{#post}}{{#has tag="lobstar,hash-lobstar-post,lobstar-post"}}page-lobstar {{/has}}{{/post}}{{body_class}}">
+<body class="{{#post}}{{#has tag="lobstar,hash-lobstar-post,lobstar-post"}}page-lobstar {{else}}{{#has tag="iprl"}}page-iprl {{/has}}{{/has}}{{/post}}{{body_class}}">
 
 {{#post}}
 {{#has tag="lobstar,hash-lobstar-post,lobstar-post"}}
@@ -94,6 +102,94 @@
             <span class="lobstar-footer-meta">A division of the Imperial College Robotics Society &middot; &copy; {{date format="YYYY"}}</span>
         </div>
     </footer>
+
+{{else}}
+{{#has tag="iprl"}}
+
+    {{> iprl-header activeNews=true showEyebrow=true}}
+
+    <main class="site-content">
+        <article class="iprl-post">
+            <a href="/iprl/#news" class="iprl-post-back">&larr; Back to News</a>
+            {{#if primary_tag}}<div class="iprl-eyebrow">{{primary_tag.name}}</div>{{/if}}
+            <h1 class="iprl-post-title">{{title}}</h1>
+            <div class="iprl-post-byline">
+                {{#foreach authors}}
+                {{#if @first}}
+                {{#if profile_image}}
+                <img class="iprl-post-avatar" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
+                {{else}}
+                <span class="iprl-avatar" data-iprl-initials="{{name}}"></span>
+                {{/if}}
+                <div>
+                    <div class="iprl-post-author">{{name}}</div>
+                    <div class="iprl-post-meta">{{date format="D MMMM YYYY"}} &middot; {{reading_time}}</div>
+                </div>
+                {{/if}}
+                {{/foreach}}
+            </div>
+        </article>
+
+        {{#if feature_image}}
+        <div class="iprl-post-feature">
+            <img
+                srcset="{{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1000w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(min-width: 1100px) 1100px, 90vw"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{title}}">
+        </div>
+        {{/if}}
+
+        <article class="iprl-post-body">
+            {{content}}
+        </article>
+
+        {{#if tags}}
+        <div class="iprl-post-tags">
+            <div class="iprl-post-tag-list">
+                {{#foreach tags}}<span class="iprl-post-tag-chip">{{name}}</span>{{/foreach}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if primary_author.bio}}
+        <div class="iprl-post-author-bio">
+            {{#if primary_author.profile_image}}
+            <img class="iprl-post-bio-avatar" src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}">
+            {{else}}
+            <span class="iprl-avatar iprl-avatar-lg" data-iprl-initials="{{primary_author.name}}"></span>
+            {{/if}}
+            <div>
+                <div class="iprl-post-author">{{primary_author.name}}</div>
+                <p class="iprl-post-bio">{{primary_author.bio}}</p>
+            </div>
+        </div>
+        {{/if}}
+
+        <section class="iprl-post-related">
+            <div class="iprl-eyebrow">More from the Lab</div>
+            <div class="iprl-post-related-grid">
+                {{#get "posts" filter="id:-{{id}}+tag:iprl" limit="2" include="tags,authors" as |more_posts|}}
+                    {{#foreach more_posts}}
+                    <a class="iprl-post-related-card" href="{{url}}">
+                        {{#if feature_image}}<div class="iprl-post-related-media"><img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy"></div>{{/if}}
+                        {{#if primary_tag}}<div class="iprl-post-related-tag">{{primary_tag.name}}</div>{{/if}}
+                        <h3 class="iprl-post-related-title">{{title}}</h3>
+                    </a>
+                    {{/foreach}}
+                {{/get}}
+                <a class="iprl-post-related-card" href="/iprl-archive/">
+                    <div class="iprl-post-related-media"><img src="{{asset "images/iprl/science-1.jpg"}}" alt="Mission archive" loading="lazy"></div>
+                    <div class="iprl-post-related-tag">Archive</div>
+                    <h3 class="iprl-post-related-title">See the full Mission Archive</h3>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    {{> iprl-footer}}
 
 {{else}}
 
@@ -177,6 +273,7 @@
 
     {{> footer}}
 
+{{/has}}
 {{/has}}
 {{/post}}
 

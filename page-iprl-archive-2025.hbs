@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    <style>
+        @font-face { font-family: 'Tw Cen MT'; src: url('{{asset "fonts/iprl/TwCenMT.ttf"}}') format('truetype'); font-weight: 400 900; font-display: swap; }
+        @font-face { font-family: 'Tw Cen MT Cond ExtraBold'; src: url('{{asset "fonts/iprl/TwCenMTStdExtraBoldCond.otf"}}') format('opentype'); font-weight: 800; font-display: swap; }
+        @font-face { font-family: 'IntoDotMatrix'; src: url('{{asset "fonts/iprl/IntoDotMatrix.ttf"}}') format('truetype'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IPRL Inter'; src: url('{{asset "fonts/iprl/Inter-Variable.ttf"}}') format('truetype'); font-weight: 100 900; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'IPRL Inter'; src: url('{{asset "fonts/iprl/Inter-Italic-Variable.ttf"}}') format('truetype'); font-weight: 100 900; font-style: italic; font-display: swap; }
+    </style>
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+    {{ghost_head}}
+</head>
+<body class="page-iprl {{body_class}}">
+
+{{!--
+  IPRL Mission Archive — 2025 (BOBCat). One Ghost Page per year (real
+  navigation between years, not the design's client-side tabs) — see
+  page-iprl-archive-2024.hbs / -2023.hbs for the other seasons.
+
+  Splash image/title/eyebrow come from this Page's feature_image/title/
+  custom_excerpt (with hardcoded fallbacks below). Everything else — specs
+  strip, Team, Achievements, Gallery — is authored directly in this Page's
+  body in Ghost Admin: paste the specs strip as an HTML card (see readme.md
+  for the exact markup to reuse), then a heading + paragraph for Team, a
+  bulleted list for Achievements, and a native Gallery card for photos.
+  See .iprl-archive-body in screen.css for how that content is styled.
+--}}
+
+{{> iprl-header activeArchive=true showEyebrow=true}}
+
+<main class="site-content">
+    {{#post}}
+    <section class="iprl-archive-hero">
+        <div class="iprl-archive-hero-inner">
+            <div class="iprl-eyebrow">Mission Archive</div>
+            <h1 class="iprl-heading iprl-heading-light iprl-archive-hero-title">Every rover.<br>Every season.</h1>
+            <p class="iprl-archive-hero-lede">A season-by-season record of IPRL's rovers, the teams who built them, and what they achieved at the European Rover Challenge.</p>
+        </div>
+    </section>
+
+    {{> iprl-archive-tabs active2025=true}}
+
+    <section class="iprl-archive-panel">
+        <div class="iprl-archive-splash">
+            {{#if feature_image}}
+            <img src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+            {{else}}
+            <img src="{{asset "images/iprl/science-1.jpg"}}" alt="BOBCat rover and team, ERC 2025">
+            {{/if}}
+            <div class="iprl-archive-splash-scrim"></div>
+            <div class="iprl-archive-splash-caption">
+                <div class="iprl-eyebrow">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}European Rover Challenge 2025 &middot; Krak&oacute;w{{/if}}</div>
+                <h2 class="iprl-archive-rover-name">{{#if title}}{{title}}{{else}}BOBCat{{/if}}</h2>
+            </div>
+        </div>
+
+        <article class="iprl-archive-body">
+            {{content}}
+        </article>
+    </section>
+    {{/post}}
+</main>
+
+{{> iprl-footer}}
+
+<script src="{{asset "js/main.js"}}"></script>
+{{ghost_foot}}
+</body>
+</html>

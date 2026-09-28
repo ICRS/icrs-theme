@@ -1,0 +1,30 @@
+<footer id="join" class="iprl-footer">
+    <div class="iprl-footer-inner">
+        <div class="iprl-footer-grid">
+            <div class="iprl-footer-brand">
+                <div class="iprl-logo">
+                    {{> iprl-logo}}
+                </div>
+                <p>Imperial Planetary Robotics Lab is a student lab within Imperial College Robotics Society, building rovers and conducting novel planetary science research.</p>
+                <a href="{{#if @custom.iprl_join_url}}{{@custom.iprl_join_url}}{{else}}/iprl/#join{{/if}}" class="iprl-btn iprl-btn-solid">Join the Lab</a>
+            </div>
+            <div class="iprl-footer-col">
+                <div class="iprl-footer-label">Explore</div>
+                <a href="/iprl/#info">About the Lab</a>
+                <a href="/iprl/#news">News</a>
+                <a href="/iprl/#gallery">Gallery</a>
+                <a href="/iprl/#supporters">Support Us</a>
+                <a href="/iprl-shop/">Shop</a>
+                <a href="/iprl-archive/">Mission Archive</a>
+            </div>
+            <div class="iprl-footer-col">
+                {{!-- TODO: point these at IPRL's real social/contact links --}}
+                <div class="iprl-footer-label">Connect</div>
+                <a href="https://instagram.com/icrobotics">Instagram</a>
+                <a href="https://uk.linkedin.com/company/imperial-planetary-robotics-lab">LinkedIn</a>
+                <a href="mailto:icrobotics@imperial.ac.uk">Email us</a>
+            </div>
+        </div>
+        <div class="iprl-footer-meta">&copy; {{date format="YYYY"}} Imperial Planetary Robotics Lab &middot; Imperial College Robotics Society</div>
+    </div>
+</footer>

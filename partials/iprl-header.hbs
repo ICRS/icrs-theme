@@ -1,0 +1,20 @@
+<header class="iprl-header">
+    <div class="iprl-header-inner">
+        <a href="/iprl/" class="iprl-logo">
+            {{> iprl-logo}}
+        </a>
+        <nav class="iprl-nav">
+            <a href="/iprl/#news" class="{{#if activeNews}}is-active{{/if}}">News</a>
+            <a href="/iprl/#gallery">Gallery</a>
+            <a href="/iprl-shop/" class="{{#if activeShop}}is-active{{/if}}">Shop</a>
+            <a href="/iprl-archive/" class="{{#if activeArchive}}is-active{{/if}}">Archive</a>
+            <a href="/iprl/#supporters" class="{{#if activeSupport}}is-active{{/if}}">Support Us</a>
+            <a href="{{#if @custom.iprl_join_url}}{{@custom.iprl_join_url}}{{else}}/iprl/#join{{/if}}" class="iprl-nav-cta">Join the Lab</a>
+        </nav>
+    </div>
+    {{#if showEyebrow}}
+    <div class="iprl-header-eyebrow-bar">
+        <div class="iprl-eyebrow iprl-hero-eyebrow">European Rover Challenge &middot; Imperial College Robotics Society</div>
+    </div>
+    {{/if}}
+</header>

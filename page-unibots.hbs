@@ -68,7 +68,7 @@
 
 
 {{!-- Team --}}
-{{#get "posts" filter="tag:hash-unibots-team" limit="all" order="published_at asc" as |team|}}
+{{#get "posts" filter="tag:hash-unibots-team" limit="100" order="published_at asc" as |team|}}
     {{#if team}}
     <section id="team" class="project-page-section">
         <div class="project-page-container">

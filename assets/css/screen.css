@@ -3730,3 +3730,1365 @@ body.page-lobstar a.lobstar-polaroid:hover {
     aspect-ratio: 16 / 9;
     height: auto;
 }
+
+/* --------------------------------------------------------------------------
+   17. IPRL Front Page (standalone sub-site — Tw Cen MT + IntoDotMatrix + Inter)
+   Own design system, deliberately isolated from the ICRS brand vars in
+   section 0 — this is a different brand orange (#FF9700) from
+   --color-iprl-orange (#FF5C00), which is still used by the ICRS homepage
+   hero tag. Everything below is scoped under .page-iprl so it can never leak.
+   -------------------------------------------------------------------------- */
+
+.page-iprl {
+    --iprl-ink: #121016;
+    --iprl-cream: #FFFDF5;
+    --iprl-orange: #FF9700;
+    --iprl-orange-hover: #cc7900;
+    --iprl-grey: #6d6d6d;
+    --iprl-body-ink: #3a3742;
+    --iprl-card-tint: #F2F0E6;
+    --iprl-font-display: 'Tw Cen MT', sans-serif;
+    --iprl-font-display-cond: 'Tw Cen MT Cond ExtraBold', sans-serif;
+    --iprl-font-mono: 'IntoDotMatrix', monospace;
+    --iprl-font-body: 'IPRL Inter', sans-serif;
+
+    margin: 0;
+    background: var(--iprl-cream);
+    color: var(--iprl-ink);
+    font-family: var(--iprl-font-body);
+}
+
+.page-iprl a {
+    color: var(--iprl-orange);
+    text-decoration: none;
+}
+
+.page-iprl a:hover {
+    color: var(--iprl-orange-hover);
+}
+
+.page-iprl .site-content {
+    display: block;
+}
+
+.iprl-mark,
+.iprl-motif {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.iprl-mark {
+    color: var(--iprl-orange);
+}
+
+/* Header */
+.iprl-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 253, 245, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(18, 16, 22, 0.08);
+}
+
+.iprl-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px clamp(20px, 5vw, 64px);
+}
+
+.iprl-logo {
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+
+.iprl-logo-svg {
+    height: 100%;
+    width: auto;
+    color: var(--iprl-ink);
+}
+
+.iprl-footer .iprl-logo-svg {
+    color: var(--iprl-cream);
+}
+
+.iprl-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 36px);
+    flex-wrap: wrap;
+}
+
+.iprl-nav a {
+    font-family: var(--iprl-font-body);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--iprl-ink);
+}
+
+.iprl-nav a.is-active {
+    color: var(--iprl-orange) !important;
+}
+
+.iprl-nav-cta {
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    background: var(--iprl-ink);
+    color: var(--iprl-cream) !important;
+    padding: 11px 20px;
+    border-radius: 2px;
+}
+
+/* Hero */
+.iprl-hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: flex-end;
+    background: var(--iprl-ink);
+    overflow: hidden;
+}
+
+.iprl-hero-media {
+    position: absolute;
+    inset: 0;
+}
+
+.iprl-hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    opacity: 0.55;
+}
+
+.iprl-hero-media::after,
+.iprl-hero-media::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.iprl-hero-media::before {
+    background: linear-gradient(180deg, rgba(18, 16, 22, 0.55) 0%, rgba(18, 16, 22, 0.35) 35%, rgba(18, 16, 22, 0.97) 100%);
+}
+
+.iprl-hero-media::after {
+    background: radial-gradient(ellipse 900px 500px at 85% 15%, rgba(255, 151, 0, 0.22), transparent 70%);
+}
+
+.iprl-hero-motif {
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    width: 320px;
+    height: 320px;
+    pointer-events: none;
+    opacity: 0.16;
+    transform: rotate(4deg);
+    color: var(--iprl-orange);
+}
+
+.iprl-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 clamp(20px, 5vw, 64px) 72px;
+    max-width: 1200px;
+}
+
+.iprl-eyebrow {
+    font-family: var(--iprl-font-mono);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--iprl-orange);
+    margin-bottom: 22px;
+}
+
+.iprl-header-eyebrow-bar {
+    background: var(--iprl-orange);
+    padding: 10px clamp(20px, 5vw, 64px);
+}
+
+.iprl-hero-eyebrow {
+    color: var(--iprl-cream);
+    margin-bottom: 0;
+}
+
+.iprl-hero-title {
+    font-family: var(--iprl-font-display);
+    font-weight: 800;
+    font-size: clamp(44px, 9vw, 132px);
+    line-height: 0.94;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--iprl-cream);
+    margin: 0 0 28px;
+}
+
+.iprl-hero-body {
+    font-family: var(--iprl-font-body);
+    font-weight: 400;
+    font-size: clamp(17px, 2vw, 21px);
+    line-height: 1.5;
+    color: rgba(255, 253, 245, 0.82);
+    max-width: 620px;
+    margin: 0 0 40px;
+}
+
+.iprl-hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.iprl-btn {
+    font-family: var(--iprl-font-body);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    padding: 16px 30px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.iprl-btn-solid {
+    background: var(--iprl-orange);
+    color: var(--iprl-ink) !important;
+}
+
+.iprl-btn-outline {
+    background: transparent;
+    color: var(--iprl-cream) !important;
+    border: 1px solid rgba(255, 253, 245, 0.4);
+    padding: 15px 30px;
+}
+
+/* Info / branches */
+.iprl-info {
+    padding: clamp(36px, 6vw, 72px) clamp(20px, 5vw, 64px);
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-info-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 48px;
+    margin-bottom: 64px;
+}
+
+.iprl-heading {
+    font-family: var(--iprl-font-display);
+    font-weight: 800;
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.02;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.iprl-heading-light {
+    color: var(--iprl-cream);
+}
+
+.iprl-info-lede {
+    font-family: var(--iprl-font-body);
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--iprl-body-ink);
+    align-self: center;
+    margin: 0;
+}
+
+.iprl-branch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: rgba(18, 16, 22, 0.08);
+}
+
+.iprl-branch {
+    background: var(--iprl-cream);
+    padding: 0 0 36px;
+}
+
+.iprl-branch-media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.iprl-branch-media-dark {
+    background: var(--iprl-ink);
+}
+
+.iprl-branch-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.iprl-branch-body {
+    padding: 28px 32px 0;
+}
+
+.iprl-branch-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.iprl-branch-label .iprl-mark {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.iprl-branch-label span {
+    font-family: var(--iprl-font-mono);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--iprl-orange);
+}
+
+.iprl-branch-title {
+    font-family: var(--iprl-font-display);
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+}
+
+.iprl-branch-body p {
+    font-family: var(--iprl-font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--iprl-body-ink);
+    margin: 0 0 16px;
+}
+
+.iprl-branch-footnote {
+    font-family: var(--iprl-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--iprl-grey);
+}
+
+.iprl-divider {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    background: var(--iprl-cream);
+}
+
+.iprl-divider .iprl-mark {
+    width: 24px;
+    height: 24px;
+}
+
+/* Supporters */
+.iprl-supporters {
+    position: relative;
+    background: var(--iprl-ink);
+    padding: clamp(36px, 6vw, 72px) clamp(20px, 5vw, 64px);
+    overflow: hidden;
+}
+
+.iprl-supporters-motif {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 220px;
+    pointer-events: none;
+    opacity: 0.85;
+    color: var(--iprl-orange);
+}
+
+/* Fades the motif in from the top by painting over it with the section's
+   own background color — avoids CSS mask-image, which isn't reliable
+   across engines for tall/complex SVGs. */
+.iprl-supporters-motif::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, var(--iprl-ink) 0%, transparent 45%);
+}
+
+.iprl-supporters-inner {
+    position: relative;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-supporters-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+}
+
+.iprl-supporters-lede {
+    font-family: var(--iprl-font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 253, 245, 0.65);
+    max-width: 420px;
+    margin: 0;
+}
+
+.iprl-sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 150px);
+    justify-content: center;
+    gap: 16px;
+}
+
+.iprl-sponsor-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.iprl-sponsor-tile-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    /* overflow: hidden forces this box to keep its aspect-ratio: without it,
+       a tall/narrow logo's max-height:100% can fail to resolve against the
+       aspect-ratio-derived height (not treated as "definite" for percentage
+       resolution), letting the image grow past 150px and stretch the box
+       itself with it — that's what was making Onshape's tile 150x168 while
+       ICRS's square logo stayed a correct 150x150. */
+    overflow: hidden;
+    background: rgba(255, 253, 245, 0.04);
+    border: 1px solid rgba(255, 253, 245, 0.14);
+    border-radius: 2px;
+    padding: 16px;
+}
+
+.iprl-sponsor-tile img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.iprl-sponsor-tile-fallback {
+    font-family: var(--iprl-font-body);
+    font-size: 13px;
+    color: rgba(255, 253, 245, 0.7);
+    text-align: center;
+}
+
+.iprl-sponsor-name {
+    font-family: var(--iprl-font-body);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--iprl-cream);
+    text-align: center;
+}
+
+.iprl-sponsor-tile-empty {
+    aspect-ratio: 1;
+    background: rgba(255, 253, 245, 0.04);
+    border: 1px solid rgba(255, 253, 245, 0.14);
+    border-radius: 2px;
+}
+
+/* News */
+.iprl-news {
+    padding: clamp(36px, 6vw, 72px) clamp(20px, 5vw, 64px);
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-news-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+}
+
+.iprl-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
+}
+
+.iprl-news-media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: var(--iprl-ink);
+}
+
+.iprl-news-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.iprl-news-tag {
+    font-family: var(--iprl-font-mono);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--iprl-orange);
+    margin-bottom: 10px;
+}
+
+.iprl-news-title {
+    font-family: var(--iprl-font-display);
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+}
+
+.iprl-news-title a {
+    color: var(--iprl-ink);
+}
+
+.iprl-news-excerpt {
+    font-family: var(--iprl-font-body);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--iprl-body-ink);
+    margin: 0 0 18px;
+}
+
+.iprl-news-byline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.iprl-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--iprl-ink);
+    color: var(--iprl-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--iprl-font-display);
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.iprl-news-meta {
+    font-family: var(--iprl-font-body);
+    font-size: 13px;
+    color: var(--iprl-grey);
+}
+
+/* Gallery — populated from the Page's own body (a native Ghost Gallery card) */
+.iprl-gallery {
+    padding: clamp(36px, 6vw, 72px) clamp(20px, 5vw, 64px);
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-gallery-head {
+    margin-bottom: 40px;
+}
+
+/* Carousel — flattens Ghost's Gallery card (container > row > image) into a
+   single horizontally-scrolling, snap-scrolling track via display:contents
+   on the two wrapper levels, so every image becomes a direct flex item. */
+.iprl-gallery-carousel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iprl-gallery-body {
+    flex: 1;
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    /* proximity, not mandatory — mandatory snap fights JS smooth scrollBy
+       (the arrow buttons), snapping straight back to the start instead of
+       animating to the target */
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+}
+
+.iprl-gallery-body::-webkit-scrollbar {
+    display: none;
+}
+
+.iprl-gallery-body .kg-gallery-card,
+.iprl-gallery-body .kg-gallery-container,
+.iprl-gallery-body .kg-gallery-row {
+    display: contents;
+}
+
+.iprl-gallery-body .kg-gallery-image,
+.iprl-gallery-body .kg-image-card {
+    /* !important: Ghost's gallery card sets an inline flex-basis per image
+       (style="flex: 1.5 1 0%") sized for its own masonry row layout — an
+       inline style always wins over a class, so this has to override it. */
+    flex: 0 0 clamp(220px, 32vw, 360px) !important;
+    aspect-ratio: 4 / 3;
+    scroll-snap-align: start;
+    margin: 0;
+}
+
+.iprl-gallery-body .kg-gallery-image img,
+.iprl-gallery-body .kg-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.iprl-gallery-body p {
+    font-family: var(--iprl-font-body);
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--iprl-body-ink);
+    margin: 0 0 24px;
+    flex: 0 0 auto;
+}
+
+.iprl-gallery-arrow {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(18, 16, 22, 0.15);
+    background: var(--iprl-cream);
+    color: var(--iprl-ink);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.iprl-gallery-arrow:hover {
+    background: var(--iprl-orange);
+    color: var(--iprl-cream);
+    border-color: var(--iprl-orange);
+}
+
+@media (max-width: 640px) {
+    .iprl-gallery-arrow {
+        display: none;
+    }
+}
+
+/* Footer */
+.iprl-footer {
+    background: var(--iprl-ink);
+    padding: 80px clamp(20px, 5vw, 64px) 36px;
+}
+
+.iprl-footer-inner {
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255, 253, 245, 0.12);
+}
+
+.iprl-footer-brand .iprl-logo {
+    margin-bottom: 18px;
+}
+
+.iprl-footer-brand p {
+    font-family: var(--iprl-font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 253, 245, 0.55);
+    max-width: 320px;
+    margin: 0 0 24px;
+}
+
+.iprl-footer-brand .iprl-btn-solid {
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 13px 24px;
+}
+
+.iprl-footer-label {
+    font-family: var(--iprl-font-mono);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 253, 245, 0.4);
+    margin-bottom: 18px;
+}
+
+.iprl-footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.iprl-footer-col a {
+    font-family: var(--iprl-font-body);
+    font-size: 14.5px;
+    color: rgba(255, 253, 245, 0.85) !important;
+    margin-bottom: 12px;
+}
+
+.iprl-footer-meta {
+    font-family: var(--iprl-font-body);
+    font-size: 12.5px;
+    color: rgba(255, 253, 245, 0.4);
+    padding-top: 24px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .iprl-info-intro {
+        grid-template-columns: 1fr;
+    }
+
+    .iprl-news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .iprl-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 640px) {
+    .iprl-nav {
+        gap: 12px;
+    }
+
+    .iprl-nav a:not(.iprl-nav-cta) {
+        display: none;
+    }
+
+    .iprl-news-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   18. IPRL News Post (post.hbs — tag "iprl" branch)
+   -------------------------------------------------------------------------- */
+
+.iprl-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 72px clamp(20px, 5vw, 64px) 0;
+}
+
+.iprl-post-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--iprl-font-body);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--iprl-grey) !important;
+    margin-bottom: 28px;
+}
+
+.iprl-post-title {
+    font-family: var(--iprl-font-display);
+    font-weight: 800;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+}
+
+.iprl-post-byline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(18, 16, 22, 0.1);
+}
+
+.iprl-post-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.iprl-post-author {
+    font-family: var(--iprl-font-body);
+    font-weight: 600;
+    font-size: 14.5px;
+}
+
+.iprl-post-meta {
+    font-family: var(--iprl-font-body);
+    font-size: 13px;
+    color: var(--iprl-grey);
+}
+
+.iprl-post-feature {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.iprl-post-feature img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.iprl-post-body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px clamp(20px, 5vw, 64px) 0;
+    font-family: var(--iprl-font-body);
+    font-size: 17px;
+    line-height: 1.75;
+    color: #252129;
+}
+
+.iprl-post-body p {
+    margin: 0 0 26px;
+}
+
+.iprl-post-body h2 {
+    font-family: var(--iprl-font-display);
+    font-weight: 800;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin: 44px 0 18px;
+}
+
+.iprl-post-body h3 {
+    font-family: var(--iprl-font-display);
+    font-weight: 700;
+    font-size: 21px;
+    text-transform: uppercase;
+    margin: 36px 0 16px;
+}
+
+.iprl-post-body blockquote {
+    margin: 32px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--iprl-orange);
+    font-family: var(--iprl-font-display);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.35;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    color: var(--iprl-ink);
+}
+
+.iprl-post-body img {
+    max-width: 100%;
+    height: auto;
+}
+
+.iprl-post-body ul,
+.iprl-post-body ol {
+    margin: 0 0 26px;
+    padding-left: 22px;
+}
+
+.iprl-post-tags {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 8px clamp(20px, 5vw, 64px) 56px;
+    border-bottom: 1px solid rgba(18, 16, 22, 0.1);
+}
+
+.iprl-post-tag-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.iprl-post-tag-chip {
+    font-family: var(--iprl-font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--iprl-grey);
+    background: var(--iprl-card-tint);
+    padding: 6px 12px;
+    border-radius: 2px;
+}
+
+.iprl-post-author-bio {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px clamp(20px, 5vw, 64px);
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.iprl-post-bio-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.iprl-avatar-lg {
+    width: 52px;
+    height: 52px;
+    font-size: 16px;
+}
+
+.iprl-post-bio {
+    font-family: var(--iprl-font-body);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--iprl-grey);
+    margin: 4px 0 0;
+    max-width: 520px;
+}
+
+.iprl-post-related {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px clamp(20px, 5vw, 64px) 100px;
+    border-top: 1px solid rgba(18, 16, 22, 0.1);
+}
+
+.iprl-post-related .iprl-eyebrow {
+    margin: 40px 0 28px;
+}
+
+.iprl-post-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.iprl-post-related-card {
+    display: block;
+}
+
+.iprl-post-related-media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: var(--iprl-ink);
+}
+
+.iprl-post-related-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.iprl-post-related-tag {
+    font-family: var(--iprl-font-mono);
+    font-weight: 600;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--iprl-orange);
+    margin-bottom: 8px;
+}
+
+.iprl-post-related-title {
+    font-family: var(--iprl-font-display);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: var(--iprl-ink);
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   19. IPRL Shop (page-iprl-shop.hbs)
+   -------------------------------------------------------------------------- */
+
+.iprl-shop-hero {
+    position: relative;
+    padding: 150px clamp(20px, 5vw, 64px) 90px;
+    background: var(--iprl-ink);
+    overflow: hidden;
+}
+
+.iprl-shop-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 900px 500px at 85% 0%, rgba(255, 151, 0, 0.2), transparent 70%);
+}
+
+.iprl-shop-hero-inner {
+    position: relative;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-shop-title {
+    font-size: clamp(44px, 7vw, 96px);
+    line-height: 0.98;
+    margin-bottom: 20px;
+}
+
+.iprl-shop-lede {
+    font-family: var(--iprl-font-body);
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.6;
+    color: rgba(255, 253, 245, 0.75);
+    max-width: 560px;
+    margin: 0 0 32px;
+}
+
+.iprl-shop-hero-actions {
+    display: flex;
+    gap: clamp(16px, 3vw, 32px);
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.iprl-shop-hero-actions a {
+    font-family: var(--iprl-font-body);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--iprl-cream) !important;
+    border-bottom: 1px solid rgba(255, 253, 245, 0.4);
+    padding-bottom: 4px;
+}
+
+.iprl-shop-cta {
+    display: inline-block;
+}
+
+.iprl-shop-section {
+    padding: 100px clamp(20px, 5vw, 64px) 60px;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-shop-section-last {
+    padding-bottom: 120px;
+}
+
+.iprl-shop-section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.iprl-shop-season {
+    font-family: var(--iprl-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--iprl-grey);
+    text-transform: uppercase;
+}
+
+.iprl-shop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px;
+}
+
+.iprl-shop-product-media {
+    width: 100%;
+    aspect-ratio: 1;
+    /* overflow:hidden keeps this square regardless of a non-square photo —
+       see the .iprl-sponsor-tile-media fix for why aspect-ratio alone isn't
+       enough once real content is inside it. */
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: var(--iprl-card-tint);
+    border-radius: 2px;
+}
+
+.iprl-shop-product-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.iprl-shop-product-media-rounded {
+    border-radius: 12px;
+}
+
+.iprl-shop-product-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.iprl-shop-product-row h3 {
+    font-family: var(--iprl-font-display);
+    font-weight: 700;
+    font-size: 17px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.iprl-shop-product-price {
+    font-family: var(--iprl-font-body);
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.iprl-shop-product p {
+    font-family: var(--iprl-font-body);
+    font-size: 13.5px;
+    color: var(--iprl-grey);
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   20. IPRL Mission Archive (page-iprl-archive-2025/2024/2023.hbs)
+   -------------------------------------------------------------------------- */
+
+.iprl-archive-hero {
+    position: relative;
+    padding: 150px clamp(20px, 5vw, 64px) 70px;
+    background: var(--iprl-ink);
+    overflow: hidden;
+}
+
+.iprl-archive-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 900px 500px at 85% 0%, rgba(255, 151, 0, 0.2), transparent 70%);
+}
+
+.iprl-archive-hero-inner {
+    position: relative;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-archive-hero-title {
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    margin-bottom: 20px;
+}
+
+.iprl-archive-hero-lede {
+    font-family: var(--iprl-font-body);
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.6;
+    color: rgba(255, 253, 245, 0.75);
+    max-width: 600px;
+    margin: 0;
+}
+
+/* Temporary "work in progress" placeholder standing in for the Archive link */
+.iprl-wip-hero {
+    padding-bottom: 150px;
+}
+
+.iprl-wip-back {
+    display: inline-block;
+    margin-top: 32px;
+}
+
+.iprl-archive-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--iprl-cream);
+    border-bottom: 1px solid rgba(18, 16, 22, 0.08);
+    padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.iprl-archive-tabs-inner {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    gap: clamp(24px, 4vw, 48px);
+}
+
+.iprl-archive-tabs-inner a {
+    font-family: var(--iprl-font-mono);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 20px 0;
+    border-bottom: 2px solid transparent;
+    color: var(--iprl-grey) !important;
+}
+
+.iprl-archive-tabs-inner a.is-active {
+    border-bottom-color: var(--iprl-orange);
+    color: var(--iprl-ink) !important;
+}
+
+.iprl-archive-panel {
+    padding: 80px clamp(20px, 5vw, 64px) 100px;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.iprl-archive-splash {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.iprl-archive-splash img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.iprl-archive-splash-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--iprl-card-tint);
+}
+
+.iprl-archive-splash-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18, 16, 22, 0.05) 40%, rgba(18, 16, 22, 0.85) 100%);
+}
+
+.iprl-archive-splash-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 32px clamp(20px, 4vw, 48px);
+}
+
+.iprl-archive-rover-name {
+    font-family: var(--iprl-font-display);
+    font-weight: 800;
+    font-size: clamp(32px, 4.5vw, 60px);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--iprl-cream);
+    margin: 0;
+}
+
+.iprl-archive-specs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    padding: 18px 4px 56px;
+    border-bottom: 1px solid rgba(18, 16, 22, 0.08);
+    font-family: var(--iprl-font-mono);
+    font-size: 12.5px;
+    color: var(--iprl-grey);
+}
+
+.iprl-archive-specs span {
+    color: var(--iprl-ink);
+    font-weight: 600;
+}
+
+.iprl-archive-body {
+    padding-top: 56px;
+    font-family: var(--iprl-font-body);
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--iprl-body-ink);
+}
+
+.iprl-archive-body h2 {
+    font-family: var(--iprl-font-mono);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--iprl-orange);
+    margin: 0 0 20px;
+}
+
+.iprl-archive-body p {
+    margin: 0 0 28px;
+    max-width: 760px;
+}
+
+.iprl-archive-body ul,
+.iprl-archive-body ol {
+    margin: 0 0 28px;
+    padding-left: 20px;
+    max-width: 760px;
+}
+
+.iprl-archive-body .kg-gallery-container,
+.iprl-archive-body .kg-image-card {
+    margin-bottom: 28px;
+}
+
+.iprl-archive-body img {
+    border-radius: 2px;
+}
+
+@media (max-width: 900px) {
+    .iprl-post-related-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .iprl-shop-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .iprl-archive-specs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .iprl-post-related-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .iprl-shop-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .iprl-archive-tabs-inner {
+        gap: 20px;
+        overflow-x: auto;
+    }
+}

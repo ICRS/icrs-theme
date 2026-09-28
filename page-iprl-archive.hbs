@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{meta_title}}</title>
+    <style>
+        @font-face { font-family: 'Tw Cen MT'; src: url('{{asset "fonts/iprl/TwCenMT.ttf"}}') format('truetype'); font-weight: 400 900; font-display: swap; }
+        @font-face { font-family: 'Tw Cen MT Cond ExtraBold'; src: url('{{asset "fonts/iprl/TwCenMTStdExtraBoldCond.otf"}}') format('opentype'); font-weight: 800; font-display: swap; }
+        @font-face { font-family: 'IntoDotMatrix'; src: url('{{asset "fonts/iprl/IntoDotMatrix.ttf"}}') format('truetype'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IPRL Inter'; src: url('{{asset "fonts/iprl/Inter-Variable.ttf"}}') format('truetype'); font-weight: 100 900; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'IPRL Inter'; src: url('{{asset "fonts/iprl/Inter-Italic-Variable.ttf"}}') format('truetype'); font-weight: 100 900; font-style: italic; font-display: swap; }
+    </style>
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+    {{ghost_head}}
+</head>
+<body class="page-iprl {{body_class}}">
+
+{{!--
+  IPRL Mission Archive — TEMPORARY placeholder (slug "iprl-archive").
+  The real year pages (page-iprl-archive-2025/2024/2023.hbs) are fully built
+  and untouched — the Archive nav link and footer link were just repointed
+  here for now. To bring the real Archive back: change both "Archive" hrefs
+  in partials/iprl-header.hbs and partials/iprl-footer.hbs from
+  "/iprl-archive/" back to "/iprl-archive-2025/", then this file and its
+  Ghost Page can be deleted.
+--}}
+
+{{> iprl-header activeArchive=true showEyebrow=true}}
+
+<main class="site-content">
+    <section class="iprl-archive-hero iprl-wip-hero">
+        <div class="iprl-archive-hero-inner">
+            <div class="iprl-eyebrow">Mission Archive</div>
+            <h1 class="iprl-heading iprl-heading-light iprl-archive-hero-title">Work in<br>progress.</h1>
+            <p class="iprl-archive-hero-lede">The Mission Archive is still being put together. check back soon for a season-by-season record of IPRL's rovers, the teams who built them, and what they achieved at the European Rover Challenge.</p>
+            <a href="/iprl/" class="iprl-btn iprl-btn-solid iprl-wip-back">&larr; Back to IPRL</a>
+        </div>
+    </section>
+</main>
+
+{{> iprl-footer}}
+
+<script src="{{asset "js/main.js"}}"></script>
+{{ghost_foot}}
+</body>
+</html>

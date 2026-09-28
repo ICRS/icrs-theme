@@ -147,7 +147,7 @@
   Tag posts with internal tag #sponsor in Ghost Admin.
   ========================================== --}}
 
-{{#get "posts" filter="tag:hash-sponsor" limit="all" include="tags" as |sponsors|}}
+{{#get "posts" filter="tag:hash-sponsor" limit="100" include="tags" as |sponsors|}}
     {{#if sponsors}}
     <section class="sponsors-container">
         <div class="section-label">[SPONSORS / PARTNERS]</div>

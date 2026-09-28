@@ -118,7 +118,7 @@
         {{/if}}
     {{/get}}
 
-    {{#get "posts" filter="tag:hash-lobstar-sponsor" limit="all" include="tags" as |sponsors|}}
+    {{#get "posts" filter="tag:hash-lobstar-sponsor" limit="100" include="tags" as |sponsors|}}
         {{#if sponsors}}
         <section id="sponsors" class="lobstar-section lobstar-container">
             <h2 class="lobstar-section-heading">Supporters</h2>
@@ -166,7 +166,7 @@
         {{/if}}
     {{/get}}
 
-    {{#get "posts" filter="tag:hash-lobstar-subsystem" limit="all" as |subsystems|}}
+    {{#get "posts" filter="tag:hash-lobstar-subsystem" limit="100" as |subsystems|}}
         {{#if subsystems}}
         <section id="subsystems" class="lobstar-section lobstar-container">
             <h2 class="lobstar-section-heading">Subsystems</h2>
@@ -189,7 +189,7 @@
         {{/if}}
     {{/get}}
 
-    {{#get "posts" filter="tag:hash-lobstar-team" limit="all" order="published_at asc" as |team|}}
+    {{#get "posts" filter="tag:hash-lobstar-team" limit="100" order="published_at asc" as |team|}}
         {{#if team}}
         <section id="team" class="lobstar-section lobstar-container">
             <h2 class="lobstar-section-heading">Team</h2>
